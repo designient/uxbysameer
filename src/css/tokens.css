@@ -1,0 +1,62 @@
+:root {
+  /* Colors */
+  --color-bg: #0a0a0a;
+  --color-bg-elevated: #111111;
+  --color-bg-card: #141414;
+  --color-surface: rgba(255, 255, 255, 0.03);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(255, 255, 255, 0.18);
+  --color-text: #f5f5f5;
+  --color-text-muted: rgba(245, 245, 245, 0.55);
+  --color-text-dim: rgba(245, 245, 245, 0.35);
+  --color-accent: #6ee7ff;
+  --color-accent-dim: rgba(110, 231, 255, 0.15);
+  --color-accent-glow: rgba(110, 231, 255, 0.4);
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Syne', var(--font-sans);
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+  --text-xs: clamp(0.65rem, 0.6rem + 0.2vw, 0.75rem);
+  --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.875rem);
+  --text-base: clamp(0.95rem, 0.9rem + 0.3vw, 1.05rem);
+  --text-lg: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+  --text-xl: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
+  --text-2xl: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+  --text-3xl: clamp(2.25rem, 1.6rem + 2.5vw, 3.5rem);
+  --text-4xl: clamp(3rem, 2rem + 4vw, 5.5rem);
+  --text-hero: clamp(3.5rem, 2.5rem + 5vw, 8rem);
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 10rem;
+
+  /* Layout */
+  --max-width: 1400px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --nav-height: 72px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 0.3s;
+  --duration-normal: 0.6s;
+  --duration-slow: 1.2s;
+
+  /* Z-index */
+  --z-canvas: 0;
+  --z-content: 10;
+  --z-nav: 100;
+  --z-cursor: 200;
+  --z-preloader: 300;
+  --z-transition: 400;
+}
