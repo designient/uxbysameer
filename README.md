@@ -1,6 +1,6 @@
 # uxbysameer — Portfolio
 
-Dark-mode portfolio for Sameer Ul Haque, built with Vite, vanilla Three.js, GSAP 3 (ScrollTrigger + SplitText), and Lenis smooth scroll.
+Light-mode editorial portfolio for Sameer Ul Haque, built with Vite, GSAP 3 (ScrollTrigger + SplitText), and Lenis smooth scroll.
 
 ## Local development
 
@@ -16,9 +16,8 @@ npm run preview   # preview the production build
 ```
 index.html          Main single-page experience
 work/*.html         Case study pages (Gamana, Cashel, Catalyse, Cybonet)
-src/js/scene/       Three.js particle hero scene
-src/js/anims/       GSAP animations (preloader, reveals, transitions, work previews)
-src/js/components/  Role ticker, testimonials slider, misc widgets
+src/js/anims/       GSAP animations (preloader, editorial hero, reveals, transitions, work previews)
+src/js/components/  Testimonials slider, misc widgets
 src/js/data/        Site content (edit copy here)
 src/css/            Design tokens, base styles, section styles
 public/             Favicon, OG image, sitemap, robots, resume PDF
@@ -26,7 +25,7 @@ public/             Favicon, OG image, sitemap, robots, resume PDF
 
 ## Editing content
 
-- Copy for testimonials and the hero role ticker lives in `src/js/data/content.js`.
+- Copy for testimonials lives in `src/js/data/content.js`; the hero's swapping words are in `src/js/anims/heroEditorial.js`.
 - Section copy, work list, services, and the timeline are in `index.html`.
 - Case study copy is in each `work/*.html` file.
 - Replace the placeholder case visuals (`.case-visual`) with real project imagery when ready.
@@ -45,6 +44,6 @@ After connecting a custom domain, update the URLs in `public/sitemap.xml`, `publ
 
 ## Performance & accessibility notes
 
-- Single WebGL context with capped device pixel ratio (1.5); particle count drops on mobile.
-- `prefers-reduced-motion` disables smooth scroll, the particle scene, and heavy animations.
+- No WebGL — the hero is pure typography and GSAP, keeping the bundle small and fast.
+- `prefers-reduced-motion` disables smooth scroll, marquees, and heavy animations.
 - Semantic HTML, keyboard-navigable nav, ARIA labels on interactive controls.

@@ -9,14 +9,6 @@ export const site = {
   resume: '/Sameer Ul Haque Resume Final.pdf',
 };
 
-export const roles = [
-  'Fractional Head of Product',
-  'AI-Native Builder',
-  'Design Leadership',
-  'Growth Architecture',
-  'Agentic Workflow Design',
-];
-
 export const stats = [
   { value: 14, suffix: '+', label: 'Years Experience' },
   { value: 105, suffix: '+', label: 'Projects Shipped' },
@@ -36,7 +28,7 @@ export const projects = [
     title: 'Gamana',
     subtitle: 'AI-Native Digital Travel Concierge',
     tags: ['Product Strategy', 'AI', 'Growth'],
-    color: '#6ee7ff',
+    color: '#2418ec',
     href: '/work/gamana.html',
   },
   {
@@ -68,27 +60,39 @@ export const projects = [
   },
 ];
 
+// Placeholder content adapted from sohub.digital — swap with real copy later
 export const services = [
   {
-    number: '01',
-    title: 'Fractional Product Leadership',
+    id: '01',
+    titleLine1: 'Brand',
+    titleLine2: 'Identities',
+    capabilities: ['Logo', 'Typography', 'Color Palette', 'Voice & Tone', 'Guidelines'],
     description:
-      'End-to-end product strategy, roadmap planning, and cross-functional leadership for early-stage startups that need senior product judgment without a full-time hire.',
-    tags: ['Product Strategy', 'GTM', 'North Star Metrics', 'Stakeholder Alignment'],
+      "Our team will assist in developing a consistent brand voice, ensuring that all messages align with the brand's tone, values, objectives and goals.",
   },
   {
-    number: '02',
-    title: 'AI & Agentic Workflow Builds',
+    id: '02',
+    titleLine1: 'Smart',
+    titleLine2: 'Development',
+    capabilities: ['Web Development', 'App Development', 'UI/UX Design', 'Interactions', 'CMS'],
     description:
-      'Architect and ship agentic AI workflows using Claude API, GPT-4o, and automation stacks (Make, n8n) that compress weeks of manual work into automated pipelines.',
-    tags: ['Claude API', 'GPT-4o', 'n8n', 'Prompt Engineering', 'LLM Integration'],
+      "Our team will work closely with you, taking the time to understand your vision and feedback in order to bring your ideas to life. We'll provide regular updates and ensure that the final product surpasses your expectations.",
   },
   {
-    number: '03',
-    title: 'Product & UX Design Systems',
+    id: '03',
+    titleLine1: 'Marketing',
+    titleLine2: 'Campaigns',
+    capabilities: ['Digital Marketing', 'SEO', 'Social Media', 'Content Creation', 'Email Marketing'],
     description:
-      'From discovery to deployed prototype in days using vibe coding stacks. Design systems, interaction design, and usability testing for SaaS and mobile products.',
-    tags: ['Figma', 'Design Systems', 'User Research', 'Prototyping', 'Cursor'],
+      'Effective marketing goes beyond simply promoting products or services. It involves understanding target audiences, crafting compelling messages, and improving the sustainable growth of an organization.',
+  },
+  {
+    id: '04',
+    titleLine1: '3D',
+    titleLine2: 'Visualization',
+    capabilities: ['Architecture', 'Engineering', 'Construction', 'Interior Design', 'Product Design'],
+    description:
+      'Envisioning images and animations of architectural and engineering projects, using the latest software to create stunning visuals that portray astonishing photorealistic end products.',
   },
 ];
 

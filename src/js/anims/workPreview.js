@@ -32,7 +32,7 @@ export function initWorkPreviews() {
     t += 0.015;
 
     ctx.clearRect(0, 0, W, H);
-    ctx.fillStyle = '#141414';
+    ctx.fillStyle = '#fdfcfa';
     ctx.fillRect(0, 0, W, H);
 
     // Layered drifting radial blobs create a liquid-distortion feel
@@ -41,7 +41,7 @@ export function initWorkPreviews() {
       const cy = H * (0.4 + 0.35 * Math.cos(t * (0.5 + i * 0.4) + i * 1.7));
       const r = 90 + 40 * Math.sin(t + i);
       const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-      grad.addColorStop(0, activeColor + Math.round(60 - i * 15).toString(16));
+      grad.addColorStop(0, activeColor + Math.round(140 - i * 30).toString(16).padStart(2, '0'));
       grad.addColorStop(1, 'transparent');
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, W, H);
@@ -66,7 +66,7 @@ export function initWorkPreviews() {
 
   document.querySelectorAll('.work-item').forEach((item) => {
     item.addEventListener('mouseenter', () => {
-      activeColor = item.dataset.color || '#6ee7ff';
+      activeColor = item.dataset.color || '#2418ec';
       preview.classList.add('is-visible');
       if (!rafId) {
         pos.x = target.x;

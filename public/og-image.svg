@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#0a0a0a"/>
-  <circle cx="1000" cy="120" r="300" fill="#6ee7ff" opacity="0.06"/>
-  <circle cx="150" cy="550" r="250" fill="#6ee7ff" opacity="0.04"/>
-  <text x="80" y="180" font-family="Helvetica, Arial, sans-serif" font-size="32" fill="#6ee7ff" letter-spacing="6">FRACTIONAL HEAD OF PRODUCT &amp; GROWTH</text>
-  <text x="80" y="300" font-family="Helvetica, Arial, sans-serif" font-size="88" font-weight="800" fill="#f5f5f5">Sameer Ul Haque</text>
-  <text x="80" y="380" font-family="Helvetica, Arial, sans-serif" font-size="40" fill="#9a9a9a">I design products &amp; build them with AI</text>
-  <text x="80" y="540" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#6a6a6a">14 yrs · 105+ projects · Lenovo · Decathlon · Mashreq · MIT AI/ML</text>
+  <rect width="1200" height="630" fill="#f7f5f1"/>
+  <circle cx="1000" cy="120" r="300" fill="#2418ec" opacity="0.05"/>
+  <circle cx="150" cy="550" r="250" fill="#2418ec" opacity="0.04"/>
+  <text x="80" y="180" font-family="Helvetica, Arial, sans-serif" font-size="32" fill="#2418ec" letter-spacing="6">FRACTIONAL HEAD OF PRODUCT &amp; GROWTH</text>
+  <text x="80" y="300" font-family="Helvetica, Arial, sans-serif" font-size="88" font-weight="800" fill="#121212">Sameer Ul Haque</text>
+  <text x="80" y="380" font-family="Helvetica, Arial, sans-serif" font-size="40" fill="#555555">I design products &amp; build them with AI</text>
+  <text x="80" y="540" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#888888">14 yrs ï¿½ 105+ projects ï¿½ Lenovo ï¿½ Decathlon ï¿½ Mashreq ï¿½ MIT AI/ML</text>
 </svg>

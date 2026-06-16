@@ -167,23 +167,80 @@ export function initTimeline() {
   });
 }
 
-export function initServicesStack() {
+// Scale all panel titles down (uniformly) so the longest word fits its column
+function fitServiceTitles() {
+  const titles = [...document.querySelectorAll('.service-panel__title')];
+  if (!titles.length) return;
+
+  titles.forEach((t) => (t.style.fontSize = ''));
+  const baseSize = parseFloat(getComputedStyle(titles[0]).fontSize);
+  let scale = 1;
+
+  titles.forEach((title) => {
+    const available = title.closest('.service-panel__head').clientWidth - 4;
+    title.querySelectorAll('.service-panel__title-line').forEach((line) => {
+      const cs = getComputedStyle(line);
+      const probe = document.createElement('span');
+      probe.textContent = line.textContent;
+      probe.style.cssText = 'position:absolute;left:-9999px;top:0;visibility:hidden;white-space:nowrap;';
+      probe.style.fontFamily = cs.fontFamily;
+      probe.style.fontWeight = cs.fontWeight;
+      probe.style.fontSize = cs.fontSize;
+      probe.style.letterSpacing = cs.letterSpacing;
+      probe.style.textTransform = cs.textTransform;
+      document.body.appendChild(probe);
+      const w = probe.getBoundingClientRect().width;
+      probe.remove();
+      if (w > available) scale = Math.min(scale, available / w);
+    });
+  });
+
+  if (scale < 1) {
+    const size = `${Math.floor(baseSize * scale * 100) / 100}px`;
+    titles.forEach((t) => (t.style.fontSize = size));
+  }
+}
+
+export function initServicesPanels() {
+  const panels = document.querySelectorAll('.service-panel');
+  if (!panels.length) return;
+
+  fitServiceTitles();
+  if (document.fonts?.ready) document.fonts.ready.then(fitServiceTitles);
+  window.addEventListener('resize', fitServiceTitles);
+
   if (reducedMotion) return;
 
-  const cards = document.querySelectorAll('.service-card');
-  cards.forEach((card, i) => {
-    if (i === cards.length - 1) return;
-    gsap.to(card, {
-      scale: 0.95,
-      opacity: 0.6,
-      ease: 'none',
+  panels.forEach((panel) => {
+    const lines = panel.querySelectorAll('.service-panel__title-line');
+    const capabilities = panel.querySelectorAll('.service-panel__capabilities li');
+    const desc = panel.querySelector('.service-panel__desc');
+    const number = panel.querySelector('.service-panel__number');
+
+    const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: cards[i + 1],
-        start: 'top bottom',
-        end: 'top top+=120',
-        scrub: true,
+        trigger: panel,
+        start: 'top 80%',
+        once: true,
       },
     });
+
+    lines.forEach((line) => {
+      const split = new SplitText(line, { type: 'words,chars', charsClass: 'char' });
+      tl.from(
+        split.chars,
+        { yPercent: 110, duration: 0.7, ease: 'expo.out', stagger: 0.02 },
+        '<0.1'
+      );
+    });
+
+    tl.from(number, { opacity: 0, y: 12, duration: 0.5, ease: 'power3.out' }, 0)
+      .from(
+        capabilities,
+        { opacity: 0, y: 16, duration: 0.5, ease: 'power3.out', stagger: 0.05 },
+        '-=0.5'
+      )
+      .from(desc, { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, '-=0.35');
   });
 }
 
