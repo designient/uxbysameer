@@ -20,7 +20,7 @@ export function initCursor() {
     cursor.classList.remove('is-visible');
   });
 
-  const hoverTargets = 'a, button, .work-item, .btn-magnetic, .nav__link, .testimonials__btn';
+  const hoverTargets = 'a, button, input, .deck__card, .work-card, .door, .lab-card';
   document.addEventListener('mouseover', (e) => {
     if (e.target.closest(hoverTargets)) {
       cursor.classList.add('is-hover');

@@ -1,24 +1,43 @@
 :root {
   /* Colors — warm paper light mode */
-  --color-bg: #f7f5f1;
+  --color-bg: #efede8;
   --color-bg-elevated: #ffffff;
-  --color-bg-card: #fdfcfa;
-  --color-surface: rgba(18, 18, 18, 0.025);
-  --color-border: rgba(18, 18, 18, 0.12);
-  --color-border-hover: rgba(18, 18, 18, 0.3);
-  --color-text: #121212;
-  --color-text-muted: rgba(18, 18, 18, 0.6);
-  --color-text-dim: rgba(18, 18, 18, 0.4);
-  --color-accent: #2418ec;
-  --color-accent-dim: rgba(36, 24, 236, 0.08);
-  --color-accent-glow: rgba(36, 24, 236, 0.3);
-  --color-ink: #121212;
-  --shadow-card: 0 1px 2px rgba(18, 18, 18, 0.04), 0 8px 24px rgba(18, 18, 18, 0.06);
-  --shadow-card-hover: 0 2px 4px rgba(18, 18, 18, 0.06), 0 16px 40px rgba(18, 18, 18, 0.1);
+  --color-bg-card: #faf9f6;
+  --color-surface: rgba(17, 17, 17, 0.03);
+  --color-border: rgba(17, 17, 17, 0.12);
+  --color-border-hover: rgba(17, 17, 17, 0.32);
+  --color-text: #111111;
+  --color-text-muted: rgba(17, 17, 17, 0.62);
+  --color-text-dim: rgba(17, 17, 17, 0.42);
+  --color-ink: #111111;
+
+  /* Signal red carries the headline voice; violet carries the "AI" layer */
+  --color-accent: #e8322f;
+  --color-accent-dim: rgba(232, 50, 47, 0.08);
+  --color-accent-glow: rgba(232, 50, 47, 0.3);
+  --color-ai: #5b3bff;
+  --color-ai-dim: rgba(91, 59, 255, 0.1);
+  --color-ai-glow: rgba(91, 59, 255, 0.35);
+  --color-live: #22c55e;
+
+  /* Card art palette */
+  --art-pink: #f5b8f0;
+  --art-violet: #4b22d6;
+  --art-cyan: #63d8ea;
+  --art-lime: #c6f65a;
+  --art-orange: #ff6a2b;
+  --art-green: #2f8a66;
+  --art-yellow: #ffd84a;
+  --art-blue: #2f5bff;
+
+  --shadow-card: 0 1px 2px rgba(17, 17, 17, 0.04), 0 8px 24px rgba(17, 17, 17, 0.06);
+  --shadow-card-hover: 0 2px 4px rgba(17, 17, 17, 0.06), 0 20px 48px rgba(17, 17, 17, 0.12);
+  --shadow-deck: 0 18px 40px rgba(17, 17, 17, 0.18);
 
   /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Syne', var(--font-sans);
+  --font-display: 'Archivo', 'Inter', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', 'Times New Roman', serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
 
   --text-xs: clamp(0.65rem, 0.6rem + 0.2vw, 0.75rem);
@@ -29,7 +48,7 @@
   --text-2xl: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
   --text-3xl: clamp(2.25rem, 1.6rem + 2.5vw, 3.5rem);
   --text-4xl: clamp(3rem, 2rem + 4vw, 5.5rem);
-  --text-hero: clamp(3.5rem, 2.5rem + 5vw, 8rem);
+  --text-hero: clamp(2.6rem, 1.2rem + 5.4vw, 6.75rem);
 
   /* Spacing */
   --space-xs: 0.5rem;
@@ -43,14 +62,16 @@
   /* Layout */
   --max-width: 1400px;
   --gutter: clamp(1.25rem, 4vw, 3rem);
-  --nav-height: 72px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
+  --nav-height: 88px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
 
   /* Motion */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --duration-fast: 0.3s;
   --duration-normal: 0.6s;
   --duration-slow: 1.2s;
@@ -59,6 +80,7 @@
   --z-canvas: 0;
   --z-content: 10;
   --z-nav: 100;
+  --z-sheet: 150;
   --z-cursor: 200;
   --z-preloader: 300;
   --z-transition: 400;

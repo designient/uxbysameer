@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Syne:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 *,
 *::before,
@@ -38,9 +38,6 @@ body {
   line-height: 1.6;
   color: var(--color-text);
   background-color: var(--color-bg);
-  /* Dotted grid */
-  background-image: radial-gradient(circle, rgba(18, 18, 18, 0.15) 1px, transparent 1.5px);
-  background-size: 24px 24px;
   overflow-x: hidden;
   cursor: none;
 }
@@ -99,6 +96,21 @@ ol {
   border: 0;
 }
 
+a.sr-only:focus-visible {
+  top: 12px;
+  left: 12px;
+  z-index: 10000;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 10px 16px;
+  clip: auto;
+  overflow: visible;
+  border-radius: 999px;
+  background: var(--color-text, #111);
+  color: var(--color-bg, #fff);
+}
+
 .container {
   width: 100%;
   max-width: var(--max-width);
@@ -118,9 +130,119 @@ ol {
 .section-title {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
-  font-weight: 700;
-  line-height: 1.05;
+  font-weight: 800;
+  font-stretch: 80%;
+  line-height: 0.98;
   letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* Korolev-style pairing: heavy grotesk line followed by a condensed serif line */
+.t-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-stretch: normal;
+  letter-spacing: -0.01em;
+}
+
+.t-serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.section-intro {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  max-width: 56ch;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  padding: 1.05rem 1.9rem;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: transform var(--duration-fast) var(--ease-out-expo), background var(--duration-fast), color var(--duration-fast), border-color var(--duration-fast);
+  white-space: nowrap;
+}
+
+.btn--solid {
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+
+.btn--solid:hover {
+  background: var(--color-accent);
+}
+
+.btn--ghost {
+  border: 1px solid var(--color-border-hover);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* Chips */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.55em 1.1em;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+}
+
+.chip--dark {
+  background: var(--color-ink);
+  color: var(--color-bg);
+  border-color: var(--color-ink);
+}
+
+.chip__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-live);
+  animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.8); }
+}
+
+.section-title > span {
+  display: block;
 }
 
 .section-title .line {
@@ -152,7 +274,8 @@ ol {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--color-ink);
+  background: #fff;
+  mix-blend-mode: difference;
   pointer-events: none;
   z-index: var(--z-cursor);
   transform: translate(-50%, -50%);
@@ -168,7 +291,7 @@ ol {
   width: 48px;
   height: 48px;
   background: transparent;
-  border: 1px solid var(--color-ink);
+  border: 1.5px solid #fff;
 }
 
 .cursor.is-click {

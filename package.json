@@ -1,15 +1,20 @@
 {
   "name": "uxbysameer",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
+    "knowledge": "node scripts/build-knowledge.mjs",
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev:api": "npm run knowledge && wrangler pages dev public --port 8788",
+    "build": "npm run knowledge && vite build",
+    "preview": "vite preview",
+    "preview:cf": "npm run build && wrangler pages dev dist",
+    "preview:locked": "npm run build && wrangler pages dev dist --binding SITE_PASSWORD=preview123"
   },
   "devDependencies": {
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "wrangler": "^4.147.0"
   },
   "dependencies": {
     "gsap": "^3.13.0",

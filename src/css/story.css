@@ -1,0 +1,302 @@
+/* Generative art surface */
+.art {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.art__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Subtle "AI" sheen sweeping across every art surface */
+.art::after {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  z-index: 1;
+  background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.28) 50%, transparent 60%);
+  transform: translateX(-60%);
+  animation: sheen 7s var(--ease-in-out) infinite;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+
+@keyframes sheen {
+  0%, 55% { transform: translateX(-60%); }
+  100% { transform: translateX(60%); }
+}
+
+/* Story deck */
+.deck {
+  position: relative;
+  width: min(100%, 1180px);
+  height: clamp(300px, 44vh, 440px);
+  margin-inline: auto;
+}
+
+.deck__card {
+  position: absolute;
+  bottom: -14%;
+  width: clamp(190px, 17vw, 250px);
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-deck);
+  background: var(--color-ink);
+  will-change: transform;
+  text-align: left;
+}
+
+.deck__art {
+  position: absolute;
+  inset: 0;
+}
+
+.deck__label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.5em 0.9em;
+  border-radius: 100px;
+  background: rgba(17, 17, 17, 0.88);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+  transition: transform var(--duration-fast) var(--ease-out-expo), background var(--duration-fast);
+}
+
+.deck__num {
+  color: var(--art-lime);
+}
+
+.deck__card:hover .deck__label,
+.deck__card:focus-visible .deck__label {
+  background: var(--color-accent);
+}
+
+.deck__card:hover .deck__num,
+.deck__card:focus-visible .deck__num {
+  color: #fff;
+}
+
+.deck__card:focus-visible {
+  outline: 3px solid var(--color-ai);
+  outline-offset: 4px;
+}
+
+/* Mobile: swipeable row instead of a fan */
+.deck.is-row {
+  height: auto;
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: var(--space-sm) var(--gutter) var(--space-md);
+  scrollbar-width: none;
+}
+
+.deck.is-row::-webkit-scrollbar {
+  display: none;
+}
+
+.deck.is-row .deck__card {
+  position: relative;
+  bottom: auto;
+  flex: 0 0 62vw;
+  max-width: 260px;
+  scroll-snap-align: center;
+}
+
+/* Chapter sheet */
+.sheet {
+  border: none;
+  padding: 0;
+  background: transparent;
+  max-width: none;
+  max-height: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sheet::backdrop {
+  background: rgba(239, 237, 232, 0.72);
+  backdrop-filter: blur(14px);
+}
+
+.sheet[open] {
+  display: grid;
+  place-items: center;
+}
+
+.sheet__panel {
+  position: relative;
+  width: min(92vw, 560px);
+  max-height: 90dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 30px 80px rgba(17, 17, 17, 0.25);
+  overflow: hidden;
+}
+
+.sheet__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1.4rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  transition: transform var(--duration-fast) var(--ease-out-expo), background var(--duration-fast);
+}
+
+.sheet__close:hover {
+  transform: rotate(90deg);
+  background: #fff;
+}
+
+.sheet__media {
+  position: relative;
+  flex: 0 0 auto;
+  height: clamp(150px, 26dvh, 240px);
+  margin: 10px 10px 0;
+  border-radius: calc(var(--radius-xl) - 8px);
+}
+
+.sheet__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sheet__content {
+  padding: var(--space-md) clamp(1.25rem, 4vw, 2rem) var(--space-sm);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.sheet__kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ai);
+  margin-bottom: var(--space-xs);
+}
+
+.sheet__title {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+  margin-bottom: var(--space-md);
+  text-transform: uppercase;
+}
+
+.sheet__sans {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 75%;
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  letter-spacing: -0.02em;
+}
+
+.sheet__serif {
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+}
+
+.sheet__body p {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  line-height: 1.55;
+}
+
+.sheet__body p + p {
+  margin-top: var(--space-sm);
+}
+
+.sheet__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-md);
+}
+
+.sheet__facts li {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.45em 0.9em;
+  border-radius: 100px;
+  background: var(--color-ai-dim);
+  color: var(--color-ai);
+}
+
+.sheet__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) clamp(1.25rem, 4vw, 2rem) var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.sheet__nav button {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: 0.6em 0;
+  transition: color var(--duration-fast);
+}
+
+.sheet__nav button:hover {
+  color: var(--color-accent);
+}
+
+.sheet__cta {
+  padding: 0.95rem 1.4rem;
+}
+
+@media (max-width: 420px) {
+  .sheet__cta {
+    padding-inline: 1rem;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+html.sheet-open {
+  overflow: hidden;
+}
+
+/* The dialog renders in the top layer above the custom cursor, so use the native one */
+.sheet {
+  cursor: auto;
+}
+
+.sheet button,
+.sheet a {
+  cursor: pointer;
+}

@@ -1,19 +1,25 @@
+// Site content. Media fields (`image`, `video`, `photo`) are optional: when empty,
+// the generative card art is shown instead, so drop real files into /public/images
+// and /public/videos and reference them here.
+
 export const site = {
   name: 'Sameer Ul Haque',
-  title: 'Fractional Head of Product & Growth',
+  title: 'AI-Native Product Designer',
   email: 'uxbysameer@gmail.com',
-  phone: '+91 7780363087',
   location: 'Bengaluru, India',
+  timeZone: 'Asia/Kolkata',
   linkedin: 'https://www.linkedin.com/in/uxbysameer',
-  adplist: 'https://adplist.org/mentors/sameer-ul-haque',
+  adplist: 'https://adplist.org/mentors/sameer-ul-haque-Bn4u',
   resume: '/Sameer Ul Haque Resume Final.pdf',
+  booking: 'mailto:uxbysameer@gmail.com?subject=Intro%20call%20with%20Sameer',
+  avatar: '/avatar.jpg',
 };
 
 export const stats = [
-  { value: 14, suffix: '+', label: 'Years Experience' },
-  { value: 105, suffix: '+', label: 'Projects Shipped' },
-  { value: 500, suffix: '+', label: 'Designers Mentored' },
-  { value: 40, suffix: '+', label: 'SaaS Engagements' },
+  { value: 14, suffix: '+', label: 'Years shipping products' },
+  { value: 105, suffix: '+', label: 'Products shipped' },
+  { value: 650, suffix: '+', label: 'Designers taught & mentored' },
+  { value: 40, suffix: '+', label: 'SaaS engagements' },
 ];
 
 export const brands = [
@@ -21,238 +27,271 @@ export const brands = [
   'EasyWebinar', 'Cashel Family', 'Catalyse Digital', 'Cybonet',
 ];
 
-export const projects = [
+// Hero story deck. Each card opens a chapter sheet; order is the reading order.
+export const stories = [
   {
-    id: 'gamana',
-    slug: 'gamana',
-    title: 'Gamana',
-    subtitle: 'AI-Native Digital Travel Concierge',
-    tags: ['Product Strategy', 'AI', 'Growth'],
-    color: '#2418ec',
-    href: '/work/gamana.html',
+    id: 'who',
+    label: 'Who I Am',
+    titleSans: 'Who',
+    titleSerif: 'I am',
+    art: { pattern: 'checker', colors: ['#4b22d6', '#f5b8f0'] },
+    photo: '/sameer-who-i-am.webp',
+    body: [
+      "I'm Sameer. For 14 years I've designed and shipped products, more than 105 of them, for brands like Lenovo, Decathlon and Mashreq.",
+      'Today I design AI-native products and build the agents and automations behind them. I take an idea from first sketch to a working MVP, without waiting on a large team.',
+    ],
+    facts: ['14+ years', '105+ products', 'MIT-certified in AI & ML'],
+    cta: { label: 'Read the hiring brief', href: '/hire.html' },
   },
   {
-    id: 'cashel',
+    id: 'agent',
+    label: 'Agent Builder',
+    titleSans: 'Agent',
+    titleSerif: 'builder',
+    art: { pattern: 'nodes', colors: ['#111111', '#c6f65a'] },
+    body: [
+      'I founded Gamana, an AI-native travel concierge, and took it from zero to MVP. I designed the agentic workflows that generate personalised itineraries, and shipped the product with an AI-first build stack.',
+      'Behind the product, I run lean operations on automation pipelines built with Make and n8n. At Designient, bringing AI into the design workflow cut prototype cycles by 40%.',
+    ],
+    facts: ['Agentic workflows', 'Make + n8n', '40% faster prototyping'],
+    cta: { label: 'Ask my AI agent', href: '#agent' },
+  },
+  {
+    id: 'mentor',
+    label: 'Top 1% Mentor',
+    titleSans: 'Top 1%',
+    titleSerif: 'mentor',
+    art: { pattern: 'rings', colors: ['#ff6a2b', '#ffd84a'] },
+    body: [
+      'ADPList has recognised me as a Top 1% mentor multiple times. Designers from around the world book sessions with me for portfolio reviews, career moves and AI-native ways of working.',
+      'Mentoring keeps me honest: explaining a design decision to someone else is the fastest way to find out if it holds up.',
+    ],
+    facts: ['Top 1% on ADPList', 'Multiple times', 'Global mentees'],
+    cta: { label: 'Book a session', href: 'https://adplist.org/mentors/sameer-ul-haque-Bn4u', external: true },
+  },
+  {
+    id: 'teacher',
+    label: '650+ Designers',
+    titleSans: '650+',
+    titleSerif: 'designers',
+    art: { pattern: 'dots', colors: ['#2f5bff', '#63d8ea'] },
+    body: [
+      "I've taught and mentored more than 650 product designers worldwide.",
+      'At Designient School, over 350 of my students landed roles at companies like Mashreq Bank, TCS and Infosys. Now I teach the skill set I use every day: AI/UX, automation and agent building.',
+    ],
+    facts: ['650+ taught', '350+ placed', 'AI/UX curriculum'],
+    cta: { label: 'Learn with me', href: '/learn.html' },
+  },
+  {
+    id: 'trainer',
+    label: 'Corporate Trainer',
+    titleSans: 'Boardroom',
+    titleSerif: 'trainer',
+    art: { pattern: 'stripes', colors: ['#2f8a66', '#f5b8f0'] },
+    body: [
+      "I've led international corporate trainings for teams that want to design and build with AI, not just talk about it.",
+      'Workshops are hands-on: teams leave with their own prototypes, automations and a playbook they can keep using.',
+    ],
+    facts: ['International', 'Hands-on workshops', 'AI-native teams'],
+    cta: { label: 'Train your team', href: '/learn.html#corporate' },
+  },
+  {
+    id: 'global',
+    label: 'Global Talent',
+    titleSans: 'Global',
+    titleSerif: 'talent',
+    art: { pattern: 'waves', colors: ['#e8322f', '#63d8ea'] },
+    body: [
+      "I've shipped for international teams across time zones, from Lenovo's Australian web presence to Decathlon's self-checkout experience and Mashreq's design team.",
+      "I'm open to full-time roles, remote anywhere in the world or with relocation for the right team.",
+    ],
+    facts: ['Remote worldwide', 'Open to relocation', 'Async-first'],
+    cta: { label: 'Hire me full-time', href: '/hire.html' },
+  },
+];
+
+export const projects = [
+  {
+    slug: 'gamana',
+    title: 'Gamana',
+    subtitle: 'AI-native travel concierge, zero to MVP',
+    tags: ['AI Agents', 'Founder', 'Zero to MVP'],
+    art: { pattern: 'nodes', colors: ['#4b22d6', '#c6f65a'] },
+    image: '',
+    href: '/work/gamana.html',
+    featured: true,
+  },
+  {
+    slug: 'ops-automation',
+    title: 'Lean Ops Autopilot',
+    subtitle: 'Make + n8n pipelines that run a startup with a tiny team',
+    tags: ['Automation', 'n8n', 'Make'],
+    art: { pattern: 'stripes', colors: ['#111111', '#ffd84a'] },
+    image: '',
+    href: '/work/ops-automation.html',
+  },
+  {
+    slug: 'portfolio-agent',
+    title: 'Ask Sameer Agent',
+    subtitle: 'A grounded AI agent that answers recruiters and clients',
+    tags: ['LLM', 'Agent UX', 'Edge'],
+    art: { pattern: 'dots', colors: ['#5b3bff', '#f5b8f0'] },
+    image: '',
+    href: '/work/portfolio-agent.html',
+  },
+  {
     slug: 'cashel',
     title: 'Cashel Family',
-    subtitle: 'Fintech Web Application',
-    tags: ['Fintech', 'UX Research', 'Web App'],
-    color: '#a78bfa',
+    subtitle: 'Fintech web app, drop-off reduction',
+    tags: ['Fintech', 'UX Lead'],
+    art: { pattern: 'rings', colors: ['#a78bfa', '#ffffff'] },
+    image: '',
     href: '/work/cashel.html',
   },
   {
-    id: 'catalyse',
     slug: 'catalyse',
     title: 'Catalyse Referrer',
-    subtitle: 'Hiring & Referral SaaS Platform',
-    tags: ['SaaS', 'Product Design', 'B2B'],
-    color: '#34d399',
+    subtitle: 'Hiring and referral SaaS platform',
+    tags: ['SaaS', 'B2B'],
+    art: { pattern: 'checker', colors: ['#2f8a66', '#c6f65a'] },
+    image: '',
     href: '/work/catalyse.html',
   },
   {
-    id: 'cybonet',
     slug: 'cybonet',
     title: 'Cybonet Mail Secure',
-    subtitle: 'Enterprise Mobile Security App',
-    tags: ['Mobile', 'Security', 'Enterprise'],
-    color: '#f472b6',
+    subtitle: 'Enterprise mobile security app',
+    tags: ['Enterprise', 'Mobile'],
+    art: { pattern: 'waves', colors: ['#f472b6', '#111111'] },
+    image: '',
     href: '/work/cybonet.html',
   },
 ];
 
-// Placeholder content adapted from sohub.digital — swap with real copy later
-export const services = [
+// AI Lab: agents, automations and experiments. Set `video` to a looping .mp4/.webm in /public/videos.
+export const lab = [
   {
-    id: '01',
-    titleLine1: 'Brand',
-    titleLine2: 'Identities',
-    capabilities: ['Logo', 'Typography', 'Color Palette', 'Voice & Tone', 'Guidelines'],
-    description:
-      "Our team will assist in developing a consistent brand voice, ensuring that all messages align with the brand's tone, values, objectives and goals.",
+    title: 'Itinerary agent',
+    kind: 'Agent',
+    outcome: 'Turns a traveller’s preferences into a personalised day-by-day plan inside Gamana.',
+    stack: ['LLM APIs', 'Agentic workflow', 'Cursor'],
+    art: { pattern: 'nodes', colors: ['#4b22d6', '#c6f65a'] },
+    video: '',
+    href: '/work/gamana.html',
   },
   {
-    id: '02',
-    titleLine1: 'Smart',
-    titleLine2: 'Development',
-    capabilities: ['Web Development', 'App Development', 'UI/UX Design', 'Interactions', 'CMS'],
-    description:
-      "Our team will work closely with you, taking the time to understand your vision and feedback in order to bring your ideas to life. We'll provide regular updates and ensure that the final product surpasses your expectations.",
+    title: 'Ops autopilot',
+    kind: 'Automation',
+    outcome: 'Make and n8n pipelines that handle the repetitive operations work of a lean team.',
+    stack: ['n8n', 'Make', 'Webhooks'],
+    art: { pattern: 'stripes', colors: ['#111111', '#ffd84a'] },
+    video: '',
+    href: '/work/ops-automation.html',
   },
   {
-    id: '03',
-    titleLine1: 'Marketing',
-    titleLine2: 'Campaigns',
-    capabilities: ['Digital Marketing', 'SEO', 'Social Media', 'Content Creation', 'Email Marketing'],
-    description:
-      'Effective marketing goes beyond simply promoting products or services. It involves understanding target audiences, crafting compelling messages, and improving the sustainable growth of an organization.',
+    title: 'Ask Sameer',
+    kind: 'Agent',
+    outcome: 'The agent on this site: grounded in my work, rate-limited, running at the edge.',
+    stack: ['OpenAI', 'Cloudflare', 'Streaming UI'],
+    art: { pattern: 'dots', colors: ['#5b3bff', '#f5b8f0'] },
+    video: '',
+    href: '#agent',
   },
   {
-    id: '04',
-    titleLine1: '3D',
-    titleLine2: 'Visualization',
-    capabilities: ['Architecture', 'Engineering', 'Construction', 'Interior Design', 'Product Design'],
-    description:
-      'Envisioning images and animations of architectural and engineering projects, using the latest software to create stunning visuals that portray astonishing photorealistic end products.',
+    title: 'AI prototyping loop',
+    kind: 'Workflow',
+    outcome: 'An AI-assisted design-to-prototype workflow that cut prototype cycles by 40% at Designient.',
+    stack: ['Figma', 'AI codegen', 'Vibe coding'],
+    art: { pattern: 'checker', colors: ['#ff6a2b', '#f5b8f0'] },
+    video: '',
+    href: '/work-with-me.html',
   },
 ];
 
 export const experience = [
   {
     period: 'Mar 2025 — Present',
-    role: 'Head of Product & Growth',
+    role: 'Founder, Head of Product & Growth',
     company: 'Gamana',
     description:
-      'Founded and launched MVP of an AI-native digital travel concierge. Architecting agentic AI workflows, shipping with vibe coding stack, building growth loops from zero.',
+      'Founded and launched the MVP of an AI-native travel concierge. Designed agentic AI workflows, shipped with an AI-first build stack, and built growth loops from zero.',
   },
   {
     period: 'Aug 2023 — Feb 2025',
     role: 'Director',
     company: 'Designient Technologies',
     description:
-      'Led product strategy across 40+ SaaS engagements for global clients including Lenovo. Integrated AI-assisted design tools, cutting prototype cycles by 40%.',
+      'Led product strategy across 40+ SaaS engagements for global clients including Lenovo. Brought AI-assisted design into the workflow, cutting prototype cycles by 40%.',
   },
   {
     period: 'Aug 2022 — Aug 2023',
     role: 'UX Lead',
     company: 'Softobiz Technologies',
     description:
-      'Led UX research and product design for SaaS platforms including EasyWebinar and Cashel Family. Won Leadership Excellence Award, Jul 2023.',
+      'Led UX research and product design for SaaS platforms including EasyWebinar and Cashel Family. Won the Leadership Excellence Award in July 2023.',
   },
   {
     period: 'Nov 2018 — Jan 2022',
     role: 'UX Lead & Mentor',
     company: 'Designient School',
     description:
-      'Mentored 500+ aspiring product designers. 350+ secured placements at Mashreq Bank, TCS, and Infosys.',
+      'Taught and mentored hundreds of aspiring product designers; 350+ secured placements at Mashreq Bank, TCS and Infosys.',
   },
   {
     period: 'Apr 2014 — Sep 2018',
     role: 'Senior Product Designer',
     company: 'Salsoft Technologies',
     description:
-      'Led product design for international clients across fintech, edtech, and e-commerce over 4 years of enterprise contract work.',
+      'Led product design for international clients across fintech, edtech and e-commerce.',
   },
 ];
 
-export const testimonials = [
-  {
-    quote:
-      'Working with Sameer on the Lenovo Yoga 900 laptop and the Lenovo Australia website was a remarkable experience. His collaborative spirit and seamless communication made him an invaluable asset to our team.',
-    name: 'Donna Bedford',
-    role: 'Lenovo — Global SEO Strategist',
+// Testimonials grouped by audience. Groups with no entries are hidden automatically.
+export const testimonials = {
+  clients: {
+    label: 'Employers & clients',
+    items: [
+      {
+        quote:
+          'Working with Sameer on the Lenovo Yoga 900 laptop and the Lenovo Australia website was a remarkable experience. His collaborative spirit and seamless communication made him an invaluable asset to our team.',
+        name: 'Donna Bedford',
+        role: 'Lenovo — Global SEO Strategist',
+      },
+      {
+        quote:
+          "Sameer's knack for understanding our needs and transforming them into intuitive, user-friendly designs was exceptional. His creativity and attention to detail on the Catalyse Referrer web app was very friendly and collaborative.",
+        name: 'Manoj Bhaskaran Pillai',
+        role: 'Catalyse Digital — CTO',
+      },
+      {
+        quote:
+          "Collaborating with Sameer on the self-checkout experience was fantastic. His innovative ideas and attention to detail significantly improved our app. Sameer's dedication made the project enjoyable and successful.",
+        name: 'Sabrina Vigil',
+        role: 'Decathlon — Lead Designer',
+      },
+    ],
   },
-  {
-    quote:
-      "Sameer's knack for understanding our needs and transforming them into intuitive, user-friendly designs was exceptional. His creativity and attention to detail on the Catalyse Referrer web app was very friendly and collaborative.",
-    name: 'Manoj Bhaskaran Pillai',
-    role: 'Catalyse Digital — CTO',
+  mentees: {
+    label: 'Mentees & students',
+    items: [
+      {
+        quote:
+          'Sameer is an excellent mentor and an extremely staunch UX Designer. He brings integrity and intelligence to his work, and his overall presence positively impacted the success of Designient.',
+        name: 'Saumya Agarwal',
+        role: 'Mashreq — Lead UX Designer',
+      },
+    ],
   },
-  {
-    quote:
-      "Collaborating with Sameer on the self-checkout experience was fantastic. His innovative ideas and attention to detail significantly improved our app. Sameer's dedication made the project enjoyable and successful.",
-    name: 'Sabrina Vigil',
-    role: 'Decathlon — Lead Designer',
+  trainees: {
+    label: 'Corporate trainees',
+    items: [],
   },
-  {
-    quote:
-      'Sameer is an excellent mentor and an extremely staunch UX Designer. He brings integrity and intelligence to his work, and his overall presence positively impacted the success of Designient.',
-    name: 'Saumya Agarwal',
-    role: 'Mashreq — Lead UX Designer',
-  },
-];
+};
 
-export const caseStudies = {
-  gamana: {
-    title: 'Gamana',
-    subtitle: 'AI-Native Digital Travel Concierge',
-    role: 'Head of Product & Growth',
-    timeline: 'Mar 2025 — Present',
-    industry: 'Travel / AI',
-    stats: [
-      { label: 'Role', value: 'Founder & Product Lead' },
-      { label: 'Stack', value: 'Claude API, GPT-4o, Cursor' },
-      { label: 'Scope', value: 'Zero to MVP' },
-    ],
-    problem:
-      'Travel planning is fragmented across dozens of apps, tabs, and spreadsheets. Travelers need a single intelligent concierge that understands preferences, builds itineraries, and engages post-booking — without the overhead of a human travel agent.',
-    process: [
-      'Defined product vision and North Star metrics (activation rate, 30-day retention)',
-      'Architected agentic AI workflows for personalized itinerary generation',
-      'Shipped core product using vibe coding stack — Cursor, Framer, and Bolt',
-      'Built internal ops pipelines with Make and n8n to enable lean team execution',
-      'Designed growth loops across referral, content, and partnership channels',
-    ],
-    outcome:
-      'Launched MVP from zero with end-to-end ownership of product strategy, UX design, GTM, and growth architecture. Compressed multi-week development cycles into days through AI-assisted prototyping.',
-    next: { slug: 'cashel', title: 'Cashel Family' },
-  },
-  cashel: {
-    title: 'Cashel Family',
-    subtitle: 'Fintech Web Application',
-    role: 'UX Lead',
-    timeline: '2022 — 2023',
-    industry: 'Fintech',
-    stats: [
-      { label: 'Role', value: 'Lead UX Designer' },
-      { label: 'Platform', value: 'Web Application' },
-      { label: 'Focus', value: 'Drop-off Reduction' },
-    ],
-    problem:
-      "Cashel Family's fintech platform had critical drop-off points in core user flows. Stakeholder interviews and user research revealed friction in onboarding and transaction completion that directly impacted user satisfaction and retention.",
-    process: [
-      'Conducted stakeholder interviews and user research to map friction points',
-      'Redesigned core flows addressing identified drop-off stages',
-      'Owned full product design lifecycle from discovery through usability testing',
-      'Drove cross-functional alignment between product, engineering, and business',
-    ],
-    outcome:
-      'Redesigned core flows directly addressing friction points, improving user satisfaction and reducing abandonment in critical transaction paths.',
-    next: { slug: 'catalyse', title: 'Catalyse Referrer' },
-  },
-  catalyse: {
-    title: 'Catalyse Referrer',
-    subtitle: 'Hiring & Referral SaaS Platform',
-    role: 'Product Designer',
-    timeline: '2023',
-    industry: 'SaaS / HR Tech',
-    stats: [
-      { label: 'Role', value: 'Product Designer' },
-      { label: 'Platform', value: 'Web SaaS' },
-      { label: 'Client', value: 'Catalyse Digital' },
-    ],
-    problem:
-      'Catalyse needed a referrer hiring app that made employee referrals intuitive and trackable. The existing experience was clunky, discouraging participation and limiting the referral pipeline.',
-    process: [
-      'Collaborated closely with CTO and engineering on technical constraints',
-      'Transformed complex referral workflows into intuitive, user-friendly designs',
-      'Iterated on interaction patterns for referral tracking and rewards',
-      'Delivered high-fidelity prototypes for rapid engineering handoff',
-    ],
-    outcome:
-      'Delivered an intuitive referral platform praised by the CTO for creativity, attention to detail, and collaborative approach throughout the engagement.',
-    next: { slug: 'cybonet', title: 'Cybonet Mail Secure' },
-  },
-  cybonet: {
-    title: 'Cybonet Mail Secure',
-    subtitle: 'Enterprise Mobile Security App',
-    role: 'Product Designer',
-    timeline: '2022',
-    industry: 'Enterprise / Security',
-    stats: [
-      { label: 'Role', value: 'Product Designer' },
-      { label: 'Platform', value: 'Mobile App' },
-      { label: 'Focus', value: 'Enterprise Security UX' },
-    ],
-    problem:
-      'Enterprise mail security apps often sacrifice usability for compliance. Cybonet needed a mobile experience that enterprise users could adopt without extensive training while maintaining rigorous security standards.',
-    process: [
-      'Researched enterprise user mental models for security workflows',
-      'Designed mobile-first interaction patterns for mail security actions',
-      'Balanced security requirements with intuitive touch interactions',
-      'Created design system components for consistent enterprise deployment',
-    ],
-    outcome:
-      'Delivered a mobile security app that balanced enterprise compliance with user-friendly design, enabling faster adoption across client organizations.',
-    next: { slug: 'gamana', title: 'Gamana' },
+// Learning offers, shown on /learn.html
+export const learn = {
+  cohort: {
+    name: 'AI/UX + Automation Cohort',
+    status: 'Waitlist open',
   },
 };

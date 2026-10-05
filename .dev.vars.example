@@ -1,0 +1,7 @@
+# Copy to .dev.vars for local `npm run dev:api`. Never commit .dev.vars.
+OPENAI_API_KEY=sk-...
+# Optional: override the default model
+# OPENAI_MODEL=gpt-4o-mini
+# Optional: show the under-construction page until this password is entered.
+# Leave unset locally, otherwise the Vite dev server's /api calls get a 401.
+# SITE_PASSWORD=

@@ -1,15 +1,24 @@
+import { site } from '../data/content.js';
+
+export function initAvatar() {
+  if (!site.avatar) return;
+  document.querySelectorAll('[data-avatar]').forEach((el) => {
+    el.innerHTML = `<img src="${site.avatar}" alt="" />`;
+  });
+}
+
 export function initLocalTime() {
-  const el = document.querySelector('[data-local-time]');
-  if (!el) return;
+  const els = document.querySelectorAll('[data-local-time]');
+  if (!els.length) return;
 
   function update() {
-    const time = new Date().toLocaleTimeString('en-IN', {
-      timeZone: 'Asia/Kolkata',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: true,
+    const now = new Date();
+    const time12 = now.toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: true });
+    const time24 = now.toLocaleTimeString('en-GB', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit' });
+    const day = now.toLocaleDateString('en-GB', { timeZone: 'Asia/Kolkata', weekday: 'short' }).toUpperCase();
+    els.forEach((el) => {
+      el.textContent = el.dataset.localTime === 'chip' ? `Bengaluru ${day} ${time24}` : `Bengaluru, India — ${time12} IST`;
     });
-    el.textContent = `Bengaluru, India — ${time} IST`;
   }
 
   update();
@@ -72,7 +81,7 @@ export function initAnchorScroll(lenis) {
       const target = document.querySelector(link.getAttribute('href'));
       if (!target) return;
       e.preventDefault();
-      lenis.scrollTo(target, { offset: -72, duration: 1.4 });
+      lenis.scrollTo(target, { offset: -80, duration: 1.4 });
     });
   });
 }
