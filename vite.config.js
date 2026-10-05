@@ -7,6 +7,7 @@ const pages = {
   hire: 'hire.html',
   workWithMe: 'work-with-me.html',
   learn: 'learn.html',
+  newsletter: 'newsletter.html',
   gamana: 'work/gamana.html',
   opsAutomation: 'work/ops-automation.html',
   portfolioAgent: 'work/portfolio-agent.html',
@@ -63,8 +64,53 @@ function signatureLogo() {
   };
 }
 
+const NEWSLETTER_MARKER = '<!--newsletter-->';
+const escapeHtml = (s) =>
+  String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+/** Renders the newsletter editions from content.js into newsletter.html at the <!--newsletter--> marker. */
+function newsletterEditions() {
+  let server;
+  return {
+    name: 'newsletter-editions',
+    configureServer(s) {
+      server = s;
+    },
+    transformIndexHtml: {
+      order: 'pre',
+      async handler(html) {
+        if (!html.includes(NEWSLETTER_MARKER)) return html;
+        const { newsletter } = server
+          ? await server.ssrLoadModule('/src/js/data/content.js')
+          : await import('./src/js/data/content.js');
+        const total = newsletter.editions.length;
+        const cards = newsletter.editions
+          .map((e, i) => {
+            const num = String(total - i).padStart(2, '0');
+            return `
+          <article class="edition">
+            <a class="edition__link" href="${escapeHtml(e.url)}" target="_blank" rel="noopener">
+              <span class="edition__media art" data-art="${escapeHtml(JSON.stringify(e.art))}" data-art-key="edition-${num}" aria-hidden="true">
+                <span class="edition__num">${num}</span>
+              </span>
+              <span class="edition__body">
+                <span class="edition__kicker">Edition ${num} · <time>${escapeHtml(e.date)}</time></span>
+                <span class="edition__title">${escapeHtml(e.title)}</span>
+                <span class="edition__dek">${escapeHtml(e.dek)}</span>
+                <span class="edition__cta">Read on LinkedIn ↗</span>
+              </span>
+            </a>
+          </article>`;
+          })
+          .join('');
+        return html.replace(NEWSLETTER_MARKER, `<div class="editions" data-reveal-stagger>${cards}\n        </div>`);
+      },
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [caseStudies(), signatureLogo()],
+  plugins: [caseStudies(), signatureLogo(), newsletterEditions()],
   server: {
     proxy: {
       // `npm run dev:api` serves the Cloudflare function on 8788; the chat falls back gracefully if it isn't running.

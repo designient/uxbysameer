@@ -1161,6 +1161,11 @@
   color: var(--color-accent);
 }
 
+.page-hero__title .page-hero__tagline {
+  font-size: 0.78em;
+  margin-top: 0.08em;
+}
+
 .page-hero__lede {
   font-size: var(--text-xl);
   line-height: 1.45;
@@ -1627,6 +1632,89 @@
   color: var(--color-accent);
 }
 
+/* Newsletter editions */
+.editions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.edition__link {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.42fr) 1fr;
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: box-shadow var(--duration-normal), transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.edition__link:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+}
+
+.edition__media {
+  min-height: 240px;
+}
+
+.edition__num {
+  position: absolute;
+  left: var(--space-md);
+  bottom: var(--space-sm);
+  z-index: 2;
+  padding: 0.1em 0.3em 0.05em;
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 1;
+  color: var(--color-ink);
+}
+
+.edition__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.edition__kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.edition__title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 900;
+  font-stretch: 78%;
+  text-transform: uppercase;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+.edition__dek {
+  max-width: 46rem;
+  color: var(--color-text-muted);
+  flex: 1;
+}
+
+.edition__cta {
+  margin-top: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.edition__link:hover .edition__cta {
+  color: var(--color-accent);
+}
+
 /* Responsive */
 @media (max-width: 1100px) {
   .nav__links {
@@ -1682,6 +1770,15 @@
   .work-card--featured {
     grid-column: auto;
     grid-row: auto;
+  }
+
+  .edition__link {
+    grid-template-columns: 1fr;
+  }
+
+  .edition__media {
+    min-height: 0;
+    aspect-ratio: 16 / 7;
   }
 
   .work-card--featured .work-card__media {

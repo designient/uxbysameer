@@ -5,7 +5,17 @@ import { signatureSVG } from '../src/js/data/signature.js';
 
 const COOKIE = 'site_access';
 const ACCESS_PATH = '/__access';
-const PUBLIC_PATHS = new Set(['/favicon.svg', '/og-image.png', '/robots.txt', '/avatar.jpg']);
+const PUBLIC_PATHS = new Set([
+  '/favicon.svg',
+  '/og-image.png',
+  '/robots.txt',
+  '/avatar.jpg',
+  '/newsletter',
+  '/newsletter/',
+  '/newsletter.html',
+]);
+// Vite's hashed CSS/JS bundles; the public newsletter page can't render without them.
+const PUBLIC_PREFIXES = ['/assets/'];
 const MAX_AGE = 60 * 60 * 24 * 30;
 
 async function token(password) {
@@ -30,7 +40,7 @@ export async function onRequest(context) {
   if (!password) return next();
 
   const url = new URL(request.url);
-  if (PUBLIC_PATHS.has(url.pathname)) return next();
+  if (PUBLIC_PATHS.has(url.pathname) || PUBLIC_PREFIXES.some((p) => url.pathname.startsWith(p))) return next();
 
   const expected = await token(password);
 
@@ -156,6 +166,7 @@ function comingSoon(next, failed) {
   <p class="lead"><span>I'm rebuilding this site around AI-native product design, agents and automation.</span> <span>It's launching soon. Until then, reach me directly.</span></p>
   <div class="links">
     <a class="btn btn--solid" href="mailto:uxbysameer@gmail.com">Email me</a>
+    <a class="btn" href="/newsletter">Read the newsletter</a>
     <a class="btn" href="https://www.linkedin.com/in/uxbysameer" target="_blank" rel="noopener">LinkedIn ↗</a>
     <a class="btn" href="https://adplist.org/mentors/sameer-ul-haque-Bn4u" target="_blank" rel="noopener">Mentorship on ADPList ↗</a>
   </div>

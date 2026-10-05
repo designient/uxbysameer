@@ -208,6 +208,35 @@ export const lab = [
   },
 ];
 
+// Newsletter editions on LinkedIn, newest first. Add each new edition to the top.
+export const newsletter = {
+  name: 'UXBYSAMEER Weekly AI Digest',
+  followUrl: 'https://www.linkedin.com/in/uxbysameer',
+  editions: [
+    {
+      date: 'Sep 24, 2026',
+      title: "Your website got quietly demoted. Here's the data on what replaced it.",
+      dek: 'AI assistants have taken over the two jobs a website used to do: getting found, and building enough trust to win the call.',
+      url: 'https://www.linkedin.com/pulse/your-website-got-quietly-demoted-heres-data-what-sameer-ul-haque-mjryf',
+      art: { pattern: 'stripes', colors: ['#4b22d6', '#f5b8f0'] },
+    },
+    {
+      date: 'Aug 26, 2026',
+      title: "DeepSeek's new vision model is 20x cheaper than Claude. The catch isn't the price.",
+      dek: "DeepSeek-V4-Flash-Vision-Exp prices vision calls at almost nothing. A hard resolution cap and a documented sycophancy problem mean cheap and safe-to-use-everywhere are not the same thing.",
+      url: 'https://www.linkedin.com/pulse/deepseeks-new-vision-model-20x-cheaper-than-claude-catch-ul-haque-bnric/',
+      art: { pattern: 'dots', colors: ['#111111', '#63d8ea'] },
+    },
+    {
+      date: 'Aug 23, 2026',
+      title: 'Grok 4.6 promised frontier quality at a discount. I checked whether that holds up.',
+      dek: "xAI says Grok 4.6 matches ChatGPT 5.6 and Claude Opus 5 for a fraction of the cost. Five real tests later, here's the honest scorecard.",
+      url: 'https://www.linkedin.com/pulse/grok-46-promised-frontier-quality-discount-i-checked-whether-sameer-i4uhc/',
+      art: { pattern: 'checker', colors: ['#ff6a2b', '#ffd84a'] },
+    },
+  ],
+};
+
 export const experience = [
   {
     period: 'Mar 2025 — Present',
