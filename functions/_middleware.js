@@ -9,6 +9,7 @@ const PUBLIC_PATHS = new Set([
   '/favicon.svg',
   '/og-image.png',
   '/robots.txt',
+  '/llms.txt',
   '/avatar.jpg',
   '/newsletter',
   '/newsletter/',
@@ -40,6 +41,7 @@ export async function onRequest(context) {
   if (!password) return next();
 
   const url = new URL(request.url);
+  if (url.pathname === '/sitemap.xml') return gatedSitemap();
   if (PUBLIC_PATHS.has(url.pathname) || PUBLIC_PREFIXES.some((p) => url.pathname.startsWith(p))) return next();
 
   const expected = await token(password);
@@ -65,26 +67,104 @@ export async function onRequest(context) {
   if (url.pathname.startsWith('/api/')) {
     return new Response('Not available yet.', { status: 401 });
   }
-  return comingSoon(url.pathname + url.search, false);
+  // Only the homepage is indexable; every other locked URL serves the same page and would be a duplicate.
+  return comingSoon(url.pathname + url.search, false, url.pathname === '/');
 }
 
 function escapeAttr(s) {
   return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 }
 
-function comingSoon(next, failed) {
+const ORIGIN = 'https://uxbysameer.com';
+const SEO_TITLE = 'Sameer Ul Haque — AI-Native Product Designer & Agent Builder';
+const SEO_DESCRIPTION =
+  'Sameer Ul Haque is an AI-Native Product Designer in Bengaluru who designs AI products and builds the agents that run them. 14+ years, 105+ products shipped, Top 1% ADPList mentor. New portfolio launching soon.';
+const SITE_UPDATED = '2026-10-05';
+
+const STRUCTURED_DATA = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${ORIGIN}/#website`,
+      url: `${ORIGIN}/`,
+      name: 'uxbysameer',
+      alternateName: 'Sameer Ul Haque',
+      inLanguage: 'en',
+      publisher: { '@id': `${ORIGIN}/#person` },
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': `${ORIGIN}/#profile`,
+      url: `${ORIGIN}/`,
+      name: SEO_TITLE,
+      description: SEO_DESCRIPTION,
+      inLanguage: 'en',
+      dateModified: SITE_UPDATED,
+      isPartOf: { '@id': `${ORIGIN}/#website` },
+      mainEntity: { '@id': `${ORIGIN}/#person` },
+    },
+    {
+      '@type': 'Person',
+      '@id': `${ORIGIN}/#person`,
+      name: 'Sameer Ul Haque',
+      alternateName: 'uxbysameer',
+      jobTitle: 'AI-Native Product Designer',
+      description: 'AI-Native Product Designer who builds agents and automations.',
+      url: `${ORIGIN}/`,
+      image: `${ORIGIN}/avatar.jpg`,
+      email: 'mailto:uxbysameer@gmail.com',
+      address: { '@type': 'PostalAddress', addressLocality: 'Bengaluru', addressCountry: 'IN' },
+      sameAs: ['https://www.linkedin.com/in/uxbysameer', 'https://adplist.org/mentors/sameer-ul-haque-Bn4u'],
+      knowsAbout: ['Product design', 'AI UX', 'AI agents', 'Automation', 'n8n', 'Make', 'Design mentoring'],
+    },
+  ],
+}).replace(/</g, '\\u003c');
+
+function gatedSitemap() {
+  const urls = ['/', '/newsletter']
+    .map((p) => `  <url><loc>${ORIGIN}${p}</loc><lastmod>${SITE_UPDATED}</lastmod></url>`)
+    .join('\n');
+  return new Response(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`, {
+    headers: { 'Content-Type': 'application/xml; charset=utf-8', 'Cache-Control': 'public, max-age=3600' },
+  });
+}
+
+function comingSoon(next, failed, indexable = false) {
+  const robots = indexable && !failed ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' : 'noindex, follow';
   const html = `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="noindex" />
-<title>Sameer Ul Haque — new site coming soon</title>
-<meta name="description" content="Sameer Ul Haque, AI-Native Product Designer. A new portfolio is on the way." />
-<meta property="og:title" content="Sameer Ul Haque — AI-Native Product Designer" />
-<meta property="og:description" content="A new portfolio is on the way." />
-<meta property="og:image" content="/og-image.png" />
+<title>${SEO_TITLE}</title>
+<meta name="description" content="${SEO_DESCRIPTION}" />
+<meta name="robots" content="${robots}" />
+<meta name="author" content="Sameer Ul Haque" />
+<link rel="canonical" href="${ORIGIN}/" />
+<meta name="theme-color" content="#efede8" />
+<meta name="color-scheme" content="light" />
+<meta property="og:type" content="profile" />
+<meta property="og:site_name" content="uxbysameer" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="${ORIGIN}/" />
+<meta property="og:title" content="${SEO_TITLE}" />
+<meta property="og:description" content="I design AI products and build the agents that run them. 14+ years, 105+ products shipped, Top 1% ADPList mentor. New portfolio launching soon." />
+<meta property="og:image" content="${ORIGIN}/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Sameer Ul Haque — AI-Native Product Designer" />
+<meta property="profile:first_name" content="Sameer" />
+<meta property="profile:last_name" content="Ul Haque" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="${SEO_TITLE}" />
+<meta name="twitter:description" content="I design AI products and build the agents that run them. New portfolio launching soon." />
+<meta name="twitter:image" content="${ORIGIN}/og-image.png" />
+<meta name="twitter:image:alt" content="Sameer Ul Haque — AI-Native Product Designer" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable summary" />
+<link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+<script type="application/ld+json">${STRUCTURED_DATA}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,800..900&family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
@@ -127,7 +207,7 @@ function comingSoon(next, failed) {
 </head>
 <body>
 <header>
-  <div class="brand"><span class="avatar"><img src="/avatar.jpg" alt="" width="40" height="40" /></span><span>AI-Native<br />Product Designer</span></div>
+  <div class="brand"><span class="avatar"><img src="/avatar.jpg" alt="Sameer Ul Haque" width="40" height="40" /></span><span>AI-Native<br />Product Designer</span></div>
   <span class="chip"><span class="dot"></span>Under construction</span>
 </header>
 <main>
@@ -189,7 +269,9 @@ function comingSoon(next, failed) {
     headers: {
       'Content-Type': 'text/html; charset=utf-8',
       'Cache-Control': 'no-store',
-      'X-Robots-Tag': 'noindex',
+      'Content-Language': 'en',
+      'X-Robots-Tag': robots,
+      Link: `<${ORIGIN}/>; rel="canonical"`,
       'X-Frame-Options': 'DENY',
       'X-Content-Type-Options': 'nosniff',
       'Referrer-Policy': 'strict-origin-when-cross-origin',
