@@ -123,7 +123,7 @@ export const cases = [
   },
   {
     slug: 'portfolio-agent',
-    title: 'Ask Sameer Agent',
+    title: "Sam, Sameer's AI twin",
     subtitle: 'A grounded AI agent that answers recruiters and clients',
     hook: '',
     meta: [

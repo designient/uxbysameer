@@ -54,7 +54,7 @@ export const stories = [
       'Behind the product, I run lean operations on automation pipelines built with Make and n8n. At Designient, bringing AI into the design workflow cut prototype cycles by 40%.',
     ],
     facts: ['Agentic workflows', 'Make + n8n', '40% faster prototyping'],
-    cta: { label: 'Ask my AI agent', href: '#agent' },
+    cta: { label: 'Ask Sam', href: '#agent' },
   },
   {
     id: 'mentor',
@@ -132,7 +132,7 @@ export const projects = [
   },
   {
     slug: 'portfolio-agent',
-    title: 'Ask Sameer Agent',
+    title: "Sam, Sameer's AI twin",
     subtitle: 'A grounded AI agent that answers recruiters and clients',
     tags: ['LLM', 'Agent UX', 'Edge'],
     art: { pattern: 'dots', colors: ['#5b3bff', '#f5b8f0'] },
@@ -189,7 +189,7 @@ export const lab = [
     href: '/work/ops-automation.html',
   },
   {
-    title: 'Ask Sameer',
+    title: 'Sam, my AI twin',
     kind: 'Agent',
     outcome: 'The agent on this site: grounded in my work, rate-limited, running at the edge.',
     stack: ['OpenAI', 'Cloudflare', 'Streaming UI'],

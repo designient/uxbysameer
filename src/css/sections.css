@@ -671,6 +671,12 @@
   font-weight: 600;
 }
 
+.chat__name-sub {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--color-ai);
+}
+
 .chat__status {
   display: flex;
   align-items: center;

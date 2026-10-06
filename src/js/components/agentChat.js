@@ -1,7 +1,7 @@
 import { site } from '../data/content.js';
 
 const GREETING =
-  "Hi, I'm Sameer's AI agent. Ask me about his work, how he can help your team, or how to learn AI/UX and automation with him.";
+  "Hi, I'm Sam, Sameer's AI twin. Ask me about his work, how he can help your team, or how to learn AI/UX and automation with him.";
 
 const MAX_TURNS = 10;
 
@@ -15,7 +15,7 @@ const FALLBACKS = [
   {
     match: /hire|why|full.?time|role|job|recruit|resume|cv/i,
     answer:
-      "Sameer is an AI-native product designer with 14 years and 105+ shipped products for brands like Lenovo, Decathlon and Mashreq. He doesn't stop at design: he founded Gamana, an AI travel concierge, and built its agentic workflows and automation pipelines himself. Read the 30-second brief at /hire.html or download his resume.",
+      "Sameer is an AI-native product designer with 14 years and 105+ shipped products for brands like EasyWebinar, Lenovo, Decathlon and Mashreq. He doesn't stop at design: he builds agentic AI workflows and automation pipelines himself. Read the 30-second brief at /hire.html or download his resume.",
   },
   {
     match: /build|agent|automat|project|client|price|cost|rate|mvp|n8n|make/i,

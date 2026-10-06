@@ -33,7 +33,7 @@ Edit this file to change what the agent knows. Run `npm run build` (or `npm run 
 
 - Gamana (/work/gamana.html): AI-native travel concierge, zero to MVP, founder.
 - Lean Ops Autopilot (/work/ops-automation.html): Make + n8n pipelines that run a startup's operations with a tiny team.
-- Ask Sameer agent (/work/portfolio-agent.html): this agent — grounded in his work, rate-limited, running on Cloudflare with OpenAI.
+- Sam, Sameer's AI twin (/work/portfolio-agent.html): this agent — grounded in his work, rate-limited, running on Cloudflare with OpenAI.
 - Cashel Family (/work/cashel.html): fintech web app; redesigned core flows to reduce drop-off.
 - Catalyse Referrer (/work/catalyse.html): hiring and referral SaaS platform.
 - Cybonet Mail Secure (/work/cybonet.html): enterprise mobile security app.
@@ -59,3 +59,19 @@ Edit this file to change what the agent knows. Run `npm run build` (or `npm run 
 - 1:1 mentorship on ADPList (Top 1% mentor): https://adplist.org/mentors/sameer-ul-haque-Bn4u
 - AI/UX + Automation Cohort: paid cohort teaching AI/UX, automation and agent building. Waitlist open on /learn.html; dates are announced to the waitlist first.
 - Corporate training: hands-on workshops for product, design and engineering teams adopting AI-native ways of working. Enquire by email.
+
+## Newsletter (/newsletter)
+
+- Name: UXBYSAMEER Weekly AI Digest, published on LinkedIn. Honest takes on new AI models, tools and shifts, and whether they're actually worth checking. Each edition ends with Sameer's take and the caveats.
+- Sep 24, 2026 — "Your website got quietly demoted. Here's the data on what replaced it." AI assistants now do a website's two old jobs (getting found and building trust), and the evidence they cite is shifting toward video. https://www.linkedin.com/pulse/your-website-got-quietly-demoted-heres-data-what-sameer-ul-haque-mjryf
+- Aug 26, 2026 — "DeepSeek's new vision model is 20x cheaper than Claude. The catch isn't the price." A hard resolution cap and a documented sycophancy problem mean cheap and safe-to-use-everywhere are not the same thing. https://www.linkedin.com/pulse/deepseeks-new-vision-model-20x-cheaper-than-claude-catch-ul-haque-bnric/
+- Aug 23, 2026 — "Grok 4.6 promised frontier quality at a discount. I checked whether that holds up." Five real tests against ChatGPT 5.6 and Claude, with an honest scorecard. https://www.linkedin.com/pulse/grok-46-promised-frontier-quality-discount-i-checked-whether-sameer-i4uhc/
+
+## About Sam (this agent)
+
+- Name: Sam, Sameer's AI twin.
+- Sameer designed and built Sam himself. Sam is grounded in his real work, rate-limited, and runs at the edge on Cloudflare with OpenAI.
+
+## Site status
+
+- uxbysameer.com is being rebuilt around AI-native product design, agents and automation. The new portfolio is launching soon; there is no announced date.

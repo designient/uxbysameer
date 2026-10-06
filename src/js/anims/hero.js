@@ -2,18 +2,9 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import { deckIntro } from '../components/storyDeck.js';
+import { flowerPath } from '../data/flower.js';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
-
-function flowerPath(petals = 7, steps = 140) {
-  let d = '';
-  for (let i = 0; i < steps; i++) {
-    const t = (i / steps) * Math.PI * 2;
-    const r = 72 + 24 * Math.abs(Math.cos((petals / 2) * t)) ** 0.8;
-    d += `${i ? 'L' : 'M'}${(100 + r * Math.cos(t)).toFixed(1)} ${(100 + r * Math.sin(t)).toFixed(1)}`;
-  }
-  return `${d}Z`;
-}
 
 export function initHero() {
   document.querySelector('.hero__blob-shape path')?.setAttribute('d', flowerPath());

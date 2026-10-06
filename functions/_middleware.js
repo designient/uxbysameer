@@ -2,6 +2,7 @@
 // SITE_PASSWORD secret is set; delete the secret to make the site public.
 
 import { signatureSVG } from '../src/js/data/signature.js';
+import { SAM_CSS, samMarkup, SAM_SCRIPT } from './_lib/samWidget.js';
 
 const COOKIE = 'site_access';
 const ACCESS_PATH = '/__access';
@@ -42,6 +43,8 @@ export async function onRequest(context) {
 
   const url = new URL(request.url);
   if (url.pathname === '/sitemap.xml') return gatedSitemap();
+  // Sam on the coming-soon page; chat.js enforces same-origin and rate limits.
+  if (url.pathname === '/api/chat' && request.method === 'POST') return next();
   if (PUBLIC_PATHS.has(url.pathname) || PUBLIC_PREFIXES.some((p) => url.pathname.startsWith(p))) return next();
 
   const expected = await token(password);
@@ -211,6 +214,7 @@ function comingSoon(next, failed, indexable = false) {
   }
   @media (prefers-reduced-motion:reduce){.dot{animation:none}}
   .avatar img{width:100%;height:100%;object-fit:cover}
+  ${SAM_CSS}
 </style>
 </head>
 <body>
@@ -270,6 +274,8 @@ function comingSoon(next, failed, indexable = false) {
   </details>
 </main>
 <footer><span>AI products · Agents · Automation</span><span>© ${new Date().getFullYear()} Sameer Ul Haque</span></footer>
+${samMarkup()}
+<script>${SAM_SCRIPT}</script>
 </body>
 </html>`;
   return new Response(html, {
