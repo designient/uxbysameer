@@ -273,8 +273,8 @@ function comingSoon(next, failed, indexable = false) {
     ${failed ? '<p class="error" role="alert">That password didn’t work.</p>' : ''}
   </details>
 </main>
-<footer><span>AI products · Agents · Automation</span><span>© ${new Date().getFullYear()} Sameer Ul Haque</span></footer>
 ${samMarkup()}
+<footer><span>AI products · Agents · Automation</span><span>© ${new Date().getFullYear()} Sameer Ul Haque</span></footer>
 <script>${SAM_SCRIPT}</script>
 </body>
 </html>`;

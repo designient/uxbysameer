@@ -19,16 +19,16 @@ const FALLBACKS = [
   {
     match: 'ai-native|what does|actually do',
     answer:
-      'Sameer designs AI products end to end and builds the agents and automations behind them, so ideas become working products, not just mockups. He has led UX for SaaS platforms like EasyWebinar and Cashel Family, and ships with an AI-first build stack (Cursor, Framer, Bolt).',
+      'Sameer designs AI products end to end and builds the agents and automations behind them, so ideas become working products, not just mockups. He has led UX for SaaS platforms like EasyWebinar and Cashel Family, and ships with an AI-first build stack (Cursor, Claude Code, MCP, Supabase).',
   },
   {
     match: 'reloc|remote|full.?time|hire|role|job|recruit|resume|cv',
     answer: `Yes. Sameer is open to full-time roles, remote anywhere in the world or relocation for the right team. Email him at ${EMAIL} or connect on LinkedIn: https://www.linkedin.com/in/sameerul`,
   },
   {
-    match: 'brand|client|lenovo|decathlon|easywebinar|company|companies',
+    match: 'brand|client|lenovo|decathlon|easywebinar|gamana|company|companies',
     answer:
-      'Brands on his record include EasyWebinar, Lenovo (the Yoga 900 laptop and the Lenovo Australia website), Decathlon (a self-checkout experience), Mashreq Bank, Cashel Family, Catalyse Digital and Cybonet, across 14+ years and 105+ shipped products.',
+      'Brands on his record include Gamana, The Organization Learning Labs, EasyWebinar, Lenovo (the Yoga 900 laptop and the Lenovo Australia website), Decathlon (a self-checkout experience), Mashreq Bank, Cashel Family, Catalyse Digital and Cybonet, across 15+ years and 105+ shipped products.',
   },
   {
     match: 'how were you|built you|how do you work|who made you|are you',
@@ -42,11 +42,11 @@ const FALLBACKS = [
   },
   {
     match: 'learn|cohort|course|mentor|student|teach|train|workshop|adplist',
-    answer: `Sameer is a Top 1% ADPList mentor and has taught 650+ designers worldwide. Book 1:1 mentorship at https://adplist.org/mentors/sameer-ul-haque-Bn4u. For his AI/UX + automation cohort or training for your team, email ${EMAIL}.`,
+    answer: `Sameer is a Top 1% ADPList mentor and has taught 650+ designers worldwide. Book 1:1 mentorship at https://adplist.org/mentors/sameer-ul-haque-Bn4u. For his AI/UX + automation cohort or training for your team, email ${EMAIL}. His most recent training was for SDAIA in Riyadh, Saudi Arabia.`,
   },
   {
     match: 'agent|automat|build|team|project|n8n|make|price|cost|mvp',
-    answer: `Sameer builds agents and automations himself, from agentic AI workflows to Make and n8n pipelines that run a lean team's operations. Pricing depends on scope, so the best next step is a short intro call: ${EMAIL}`,
+    answer: `Sameer builds agents and automations himself, from agentic AI workflows to Make and n8n pipelines that run a lean team's operations. Pricing depends on scope, so the best next step is a short intro call: ${EMAIL} or +91 7780363087`,
   },
 ];
 
@@ -105,6 +105,32 @@ export const SAM_SCRIPT = String.raw`(() => {
   let busy = false;
   let started = false;
 
+  const footer = document.querySelector('footer');
+  let baseBottom = 0;
+  let liftQueued = false;
+  function measureBase() {
+    root.style.setProperty('--sam-lift', '0px');
+    baseBottom = window.innerHeight - launch.getBoundingClientRect().bottom;
+  }
+  function updateLift() {
+    liftQueued = false;
+    if (!footer) return;
+    const overlap = window.innerHeight - footer.getBoundingClientRect().top + 12 - baseBottom;
+    root.style.setProperty('--sam-lift', Math.max(0, Math.round(overlap)) + 'px');
+  }
+  function queueLift() {
+    if (liftQueued) return;
+    liftQueued = true;
+    requestAnimationFrame(updateLift);
+  }
+  measureBase();
+  updateLift();
+  window.addEventListener('scroll', queueLift, { passive: true });
+  window.addEventListener('resize', () => {
+    measureBase();
+    updateLift();
+  });
+
   const escapeHTML = (s) =>
     s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
@@ -112,6 +138,7 @@ export const SAM_SCRIPT = String.raw`(() => {
     return escapeHTML(text)
       .replace(/(https?:\/\/[^\s)]+[^\s).,])/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')
       .replace(/([\w.+-]+@[\w-]+\.[\w.]+[\w])/g, '<a href="mailto:$1">$1</a>')
+      .replace(/\+\d[\d ]{8,}\d/g, (n) => '<a href="tel:' + n.replace(/ /g, '') + '">' + n + '</a>')
       .replace(/(^|\s)(\/newsletter)\b/g, '$1<a href="$2">$2</a>');
   }
 
@@ -241,18 +268,18 @@ export const SAM_SCRIPT = String.raw`(() => {
 })();`;
 
 export const SAM_CSS = `
-  footer{padding-bottom:100px}
+  footer{margin-top:48px}
   .sam{font-family:Inter,system-ui,sans-serif;text-align:left}
   .sam-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .sam-av{position:relative;flex:none;width:36px;height:36px;border-radius:50%;background:conic-gradient(from 200deg,var(--violet),var(--pink),#ff6a2b,var(--violet))}
   .sam-av img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
   .sam-online{position:absolute;right:-1px;bottom:-1px;width:11px;height:11px;border-radius:50%;background:#22c55e;border:2px solid var(--bg)}
-  .sam-launch{position:fixed;right:clamp(16px,3vw,32px);bottom:clamp(16px,3vw,28px);z-index:50;display:inline-flex;align-items:center;gap:12px;padding:8px 22px 8px 8px;border:0;border-radius:999px;background:var(--text);color:var(--bg);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 10px 30px rgba(17,17,17,.22);transition:transform .25s cubic-bezier(.16,1,.3,1),background .2s}
+  .sam-launch{position:fixed;right:clamp(16px,3vw,32px);bottom:calc(clamp(16px,3vw,28px) + var(--sam-lift,0px));z-index:50;display:inline-flex;align-items:center;gap:12px;padding:8px 22px 8px 8px;border:0;border-radius:999px;background:var(--text);color:var(--bg);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 10px 30px rgba(17,17,17,.22);transition:transform .25s cubic-bezier(.16,1,.3,1),background .2s}
   .sam-launch:hover{transform:translateY(-2px);background:var(--violet)}
   .sam-launch:focus-visible,.sam-close:focus-visible,.sam-chip:focus-visible,.sam-send:focus-visible,.sam-input:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
   .sam-launch .sam-online{border-color:var(--text)}
   .sam.is-open .sam-launch{background:var(--violet)}
-  .sam-panel{position:fixed;right:clamp(16px,3vw,32px);bottom:calc(clamp(16px,3vw,28px) + 68px);z-index:60;display:flex;flex-direction:column;width:min(400px,calc(100vw - 32px));height:min(620px,calc(100dvh - 120px));background:var(--bg);border:1px solid var(--line);border-radius:24px;box-shadow:0 24px 60px rgba(17,17,17,.2);overflow:hidden}
+  .sam-panel{position:fixed;right:clamp(16px,3vw,32px);bottom:calc(clamp(16px,3vw,28px) + 68px + var(--sam-lift,0px));z-index:60;display:flex;flex-direction:column;width:min(400px,calc(100vw - 32px));height:min(620px,calc(100dvh - 120px - var(--sam-lift,0px)));background:var(--bg);border:1px solid var(--line);border-radius:24px;box-shadow:0 24px 60px rgba(17,17,17,.2);overflow:hidden}
   .sam-panel[hidden]{display:none}
   @media (prefers-reduced-motion:no-preference){.sam-panel{animation:sam-in .35s cubic-bezier(.16,1,.3,1)}}
   @keyframes sam-in{from{opacity:0;transform:translateY(16px) scale(.98)}}
@@ -293,6 +320,14 @@ export const SAM_CSS = `
     .sam-launch__label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
     .sam-panel{left:0;right:0;bottom:0;width:100%;height:min(88dvh,680px);border-radius:24px 24px 0 0;border-bottom:0}
     .sam.is-open .sam-launch{display:none}
+  }
+  @media (max-width:360px){
+    footer{margin-top:0}
+    .sam{display:flex;justify-content:center;padding:8px 20px 0}
+    .sam-launch{position:static;padding:6px 20px 6px 6px;gap:10px}
+    .sam-launch .sam-av{width:36px;height:36px}
+    .sam-launch__label{position:static;width:auto;height:auto;overflow:visible;clip:auto}
+    .sam.is-open .sam-launch{display:inline-flex}
   }
   @media (prefers-reduced-motion:reduce){.sam-msg--typing span{animation:none}}
 `;
