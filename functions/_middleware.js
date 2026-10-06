@@ -181,15 +181,17 @@ function comingSoon(next, failed, indexable = false) {
   .dot{width:8px;height:8px;border-radius:50%;background:#ff6a2b;animation:pulse 1.6s ease-in-out infinite}
   @keyframes pulse{50%{opacity:.35}}
   main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px clamp(20px,4vw,56px)}
-  .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
-  h1{color:var(--violet);text-transform:uppercase;line-height:.9;font-size:clamp(2.6rem,8vw,6.5rem)}
-  h1 span{display:block}
+  .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;line-height:1.8}
+  .kicker span,footer span{white-space:nowrap}
+  h1{color:var(--violet);text-transform:uppercase;line-height:.9;font-size:clamp(1.75rem,min(8vw,calc((100vw - 2 * clamp(20px,4vw,56px)) / 10.2)),6.5rem)}
+  h1 span{display:block;white-space:nowrap}
   .sans{font-family:Archivo,sans-serif;font-weight:900;font-stretch:78%;letter-spacing:-.02em}
   .serif{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:-.02em}
   p.lead{max-width:44rem;margin-top:28px;font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.6;color:var(--muted);text-wrap:balance}
   p.lead span{display:block;text-wrap:balance}
+  p.lead span.nb{display:inline;white-space:nowrap}
   .links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:32px}
-  .btn{display:inline-flex;align-items:center;padding:14px 22px;border-radius:999px;border:1px solid var(--text);color:var(--text);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;transition:background .2s,color .2s}
+  .btn{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;padding:14px 22px;border-radius:999px;border:1px solid var(--text);color:var(--text);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;transition:background .2s,color .2s}
   .btn:hover,.btn--solid{background:var(--text);color:var(--bg)}
   .btn--solid:hover{background:var(--violet);border-color:var(--violet)}
   details{margin-top:48px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--muted)}
@@ -200,7 +202,13 @@ function comingSoon(next, failed, indexable = false) {
   input:focus-visible,.btn:focus-visible,summary:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
   button{cursor:pointer}
   .error{margin-top:10px;color:#e8322f}
-  @media (max-width:560px){header .chip{display:none}form{flex-direction:column;align-items:stretch}}
+  @media (max-width:820px){.links{display:grid;grid-template-columns:1fr 1fr;width:100%;max-width:520px}}
+  @media (max-width:560px){
+    header .chip{display:none}
+    form{flex-direction:column;align-items:stretch}
+    .links{grid-template-columns:1fr;max-width:340px}
+    footer{flex-direction:column;justify-content:center;gap:6px;text-align:center}
+  }
   @media (prefers-reduced-motion:reduce){.dot{animation:none}}
   .avatar img{width:100%;height:100%;object-fit:cover}
 </style>
@@ -237,13 +245,13 @@ function comingSoon(next, failed, indexable = false) {
       requestAnimationFrame(frame);
     })();
   </script>
-  <p class="kicker">Sameer Ul Haque · New portfolio in progress</p>
+  <p class="kicker"><span>Sameer Ul Haque ·</span> <span>New portfolio in progress</span></p>
   <h1>
     <span class="sans">I design AI products</span>
     <span class="serif">&amp; build the agents</span>
     <span class="serif">that run them</span>
   </h1>
-  <p class="lead"><span>I'm rebuilding this site around AI-native product design, agents and automation.</span> <span>It's launching soon. Until then, reach me directly.</span></p>
+  <p class="lead"><span>I'm rebuilding this site around AI-native product design, agents and automation.</span> <span>It's launching soon. <span class="nb">Until then, reach me directly.</span></span></p>
   <div class="links">
     <a class="btn btn--solid" href="mailto:uxbysameer@gmail.com">Email me</a>
     <a class="btn" href="/newsletter">Read the newsletter</a>
@@ -261,7 +269,7 @@ function comingSoon(next, failed, indexable = false) {
     ${failed ? '<p class="error" role="alert">That password didn’t work.</p>' : ''}
   </details>
 </main>
-<footer><span>Bengaluru · Open to remote worldwide</span><span>© ${new Date().getFullYear()}</span></footer>
+<footer><span>AI products · Agents · Automation</span><span>© ${new Date().getFullYear()} Sameer Ul Haque</span></footer>
 </body>
 </html>`;
   return new Response(html, {
