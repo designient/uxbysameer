@@ -23,7 +23,7 @@ const FALLBACKS = [
   },
   {
     match: 'reloc|remote|full.?time|hire|role|job|recruit|resume|cv',
-    answer: `Yes. Sameer is open to full-time roles, remote anywhere in the world or relocation for the right team. Email him at ${EMAIL} or connect on LinkedIn: https://www.linkedin.com/in/uxbysameer`,
+    answer: `Yes. Sameer is open to full-time roles, remote anywhere in the world or relocation for the right team. Email him at ${EMAIL} or connect on LinkedIn: https://www.linkedin.com/in/sameerul`,
   },
   {
     match: 'brand|client|lenovo|decathlon|easywebinar|company|companies',

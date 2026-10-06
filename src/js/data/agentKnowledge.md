@@ -18,7 +18,7 @@ Edit this file to change what the agent knows. Run `npm run build` (or `npm run 
 
 - Open to full-time roles: remote anywhere in the world, or relocation for the right team.
 - Open to client projects and fractional engagements.
-- Contact: uxbysameer@gmail.com · LinkedIn: https://www.linkedin.com/in/uxbysameer
+- Contact: uxbysameer@gmail.com · LinkedIn: https://www.linkedin.com/in/sameerul
 - Hiring brief: /hire.html · Resume: /Sameer Ul Haque Resume Final.pdf
 
 ## Experience

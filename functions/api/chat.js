@@ -22,7 +22,7 @@ Knowledge base:
 `;
 
 const PREVIEW_RULES = `
-Context: the visitor is on the coming-soon page. The full site is not public yet, so never link to site pages such as /hire.html, /work-with-me.html, /learn.html or /work/. The only site page you may link is /newsletter. Point people to email (uxbysameer@gmail.com), LinkedIn (https://www.linkedin.com/in/uxbysameer) or ADPList (https://adplist.org/mentors/sameer-ul-haque-Bn4u) instead. If asked when the site launches, say it is launching soon without giving a date.
+Context: the visitor is on the coming-soon page. The full site is not public yet, so never link to site pages such as /hire.html, /work-with-me.html, /learn.html or /work/. The only site page you may link is /newsletter. Point people to email (uxbysameer@gmail.com), LinkedIn (https://www.linkedin.com/in/sameerul) or ADPList (https://adplist.org/mentors/sameer-ul-haque-Bn4u) instead. If asked when the site launches, say it is launching soon without giving a date.
 
 `;
 

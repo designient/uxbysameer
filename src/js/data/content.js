@@ -8,7 +8,7 @@ export const site = {
   email: 'uxbysameer@gmail.com',
   location: 'Bengaluru, India',
   timeZone: 'Asia/Kolkata',
-  linkedin: 'https://www.linkedin.com/in/uxbysameer',
+  linkedin: 'https://www.linkedin.com/in/sameerul',
   adplist: 'https://adplist.org/mentors/sameer-ul-haque-Bn4u',
   resume: '/Sameer Ul Haque Resume Final.pdf',
   booking: 'mailto:uxbysameer@gmail.com?subject=Intro%20call%20with%20Sameer',
@@ -211,7 +211,7 @@ export const lab = [
 // Newsletter editions on LinkedIn, newest first. Add each new edition to the top.
 export const newsletter = {
   name: 'UXBYSAMEER Weekly AI Digest',
-  followUrl: 'https://www.linkedin.com/in/uxbysameer',
+  followUrl: 'https://www.linkedin.com/in/sameerul',
   editions: [
     {
       date: 'Sep 24, 2026',

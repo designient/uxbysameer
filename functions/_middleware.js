@@ -118,7 +118,7 @@ const STRUCTURED_DATA = JSON.stringify({
       image: `${ORIGIN}/avatar.jpg`,
       email: 'mailto:uxbysameer@gmail.com',
       address: { '@type': 'PostalAddress', addressLocality: 'Bengaluru', addressCountry: 'IN' },
-      sameAs: ['https://www.linkedin.com/in/uxbysameer', 'https://adplist.org/mentors/sameer-ul-haque-Bn4u'],
+      sameAs: ['https://www.linkedin.com/in/sameerul', 'https://adplist.org/mentors/sameer-ul-haque-Bn4u'],
       knowsAbout: ['Product design', 'AI UX', 'AI agents', 'Automation', 'n8n', 'Make', 'Design mentoring'],
     },
   ],
@@ -259,7 +259,7 @@ function comingSoon(next, failed, indexable = false) {
   <div class="links">
     <a class="btn btn--solid" href="mailto:uxbysameer@gmail.com">Email me</a>
     <a class="btn" href="/newsletter">Read the newsletter</a>
-    <a class="btn" href="https://www.linkedin.com/in/uxbysameer" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a class="btn" href="https://www.linkedin.com/in/sameerul" target="_blank" rel="noopener">LinkedIn ↗</a>
     <a class="btn" href="https://adplist.org/mentors/sameer-ul-haque-Bn4u" target="_blank" rel="noopener">Mentorship on ADPList ↗</a>
   </div>
   <details${failed ? ' open' : ''}>
