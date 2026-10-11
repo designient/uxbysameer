@@ -119,10 +119,10 @@ export const cases = [
         decision: 'Rebuilt it as four steps: a hook, stories, the walking tour, and creating your own tour.',
         outcome: 'The Sprint 25 flow shipped in the Android MVP.',
         screens: [
-          { image: '', alt: 'Onboarding step 1, the hook', label: 'Hook', node: '9084:172' },
-          { image: '', alt: 'Onboarding step 2, stories', label: 'Stories', node: '9084:182' },
-          { image: '', alt: 'Onboarding step 3, the walking tour', label: 'Walking tour', node: '9084:192' },
-          { image: '', alt: 'Onboarding step 4, create your own tour', label: 'Create a tour', node: '9084:202' },
+          { image: '/images/work/gamana/onboarding-1.webp', alt: 'Onboarding step 1, the hook', label: 'Hook', node: '9084:172' },
+          { image: '/images/work/gamana/onboarding-2.webp', alt: 'Onboarding step 2, stories', label: 'Stories', node: '9084:182' },
+          { image: '/images/work/gamana/onboarding-3.webp', alt: 'Onboarding step 3, the walking tour', label: 'Walking tour', node: '9084:192' },
+          { image: '/images/work/gamana/onboarding-4.webp', alt: 'Onboarding step 4, create your own tour', label: 'Create a tour', node: '9084:202' },
         ],
       },
       {
@@ -133,9 +133,7 @@ export const cases = [
         decision: 'Coins as an internal value layer, priced by content type: story, walk, tour, city pass. A subscription sits above coins later, once purchases are instrumented, so it does not cannibalise one-time unlocks.',
         outcome: 'Coins and in-app purchases shipped in the Android MVP.',
         screens: [
-          { image: '', alt: 'Gamana Coins screen', label: 'Coins', node: '3343:8865' },
-          { image: '', alt: 'Profile and coin wallet', label: 'Profile and wallet', node: '6175:10282' },
-          { image: '', alt: 'In-app purchase coin pack', label: 'Coin pack', node: '6049:6795' },
+          { image: '/images/work/gamana/coins-1.webp', alt: 'Buy coins screen', label: 'Buy coins', node: '3343:8866' },
         ],
       },
       {
@@ -146,8 +144,10 @@ export const cases = [
         decision: 'An SOS and emergency flow, and a safety advisory tier inside the notification system, rather than a help page. Family Tracking was designed in Sprint 17 and is not in this release.',
         outcome: 'SOS and emergency flows shipped in the Android MVP.',
         screens: [
-          { image: '', alt: 'SOS system screens', label: 'SOS', node: '1772:8117' },
-          { image: '', alt: 'Emergency flow screens', label: 'Emergency flow', node: '1785:11173' },
+          { image: '/images/work/gamana/safety-1.webp', alt: 'SOS countdown, calling emergency', label: 'SOS', node: '1772:8002' },
+          { image: '/images/work/gamana/safety-2.webp', alt: 'SOS confirmation, help is on the way', label: 'Help on the way', node: '1772:8043' },
+          { image: '/images/work/gamana/safety-3.webp', alt: 'Emergency contacts by service', label: 'Emergency contacts', node: '1773:9482' },
+          { image: '/images/work/gamana/safety-4.webp', alt: 'Add an emergency contact', label: 'Add contact', node: '1082:5883' },
         ],
       },
       {
@@ -158,9 +158,9 @@ export const cases = [
         decision: 'Designed notifications as a system of 166 triggers, including a safety advisory tier, instead of one-off pushes. Sprint 15 alone produced about 35 notification designs, from arrival alerts to offline-ready and low-coins updates.',
         outcome: 'Shipped in the Android MVP.',
         screens: [
-          { image: '', alt: 'Alerts main screen', label: 'Alerts', node: '4934:702' },
-          { image: '', alt: 'Airport alert notification', label: 'Airport alert', node: '5000:11486' },
-          { image: '', alt: 'Offline ready notification', label: 'Offline ready', node: '5000:9978' },
+          { image: '/images/work/gamana/notifications-1.webp', alt: 'Alerts main screen', label: 'Alerts', node: '4934:702' },
+          { image: '/images/work/gamana/notifications-2.webp', alt: 'Location permission for airport alerts', label: 'Airport alert', node: '5000:11486' },
+          { image: '/images/work/gamana/notifications-3.webp', alt: 'Offline ready notification', label: 'Offline ready', node: '5000:9978' },
         ],
       },
       {
@@ -171,9 +171,9 @@ export const cases = [
         decision: 'Reworked the offline download flow across Sprints 10 to 16, added a dedicated download manager in Sprint 23, and made stories trigger offline through geofences.',
         outcome: 'June QA passed online walking tours and offline geofence triggers on iOS and Android.',
         screens: [
-          { image: '', alt: 'Offline downloads', label: 'Offline downloads', node: '3551:12255' },
-          { image: '', alt: 'New offline download flow', label: 'New download flow', node: '5256:6004' },
-          { image: '', alt: 'Download manager', label: 'Download manager', node: '8485:311' },
+          { image: '/images/work/gamana/offline-1.webp', alt: 'Download manager with downloaded tours', label: 'Download manager', node: '3562:13037' },
+          { image: '/images/work/gamana/offline-2.webp', alt: 'Download manager empty state', label: 'Empty state', node: '4024:9854' },
+          { image: '/images/work/gamana/offline-3.webp', alt: 'New offline download flow', label: 'Download flow', node: '5256:6004' },
         ],
       },
       {
@@ -184,10 +184,10 @@ export const cases = [
         decision: 'Add experiences without becoming a marketplace. Supply comes through Bókun and the operator’s own checkout handles payment. Gamana designs what surrounds the booking: a pre-experience brief, upcoming booking details, and a rating step after.',
         outcome: 'Booking and the pre-experience brief shipped in the Android MVP.',
         screens: [
-          { image: '', alt: 'Experiences on the home screen', label: 'Experiences', node: '7718:266' },
-          { image: '', alt: 'Booking review', label: 'Booking review', node: '8135:1623' },
-          { image: '', alt: 'Pre-experience brief', label: 'Pre-experience brief', node: '8136:219' },
-          { image: '', alt: 'Upcoming booking details', label: 'Booking details', node: '8136:337' },
+          { image: '/images/work/gamana/booking-1.webp', alt: 'Experiences on the home screen', label: 'Experiences', node: '7718:266' },
+          { image: '/images/work/gamana/booking-2.webp', alt: 'Booking review', label: 'Booking review', node: '8135:1623' },
+          { image: '/images/work/gamana/booking-3.webp', alt: 'Pre-experience brief', label: 'Pre-experience brief', node: '8136:219' },
+          { image: '/images/work/gamana/booking-4.webp', alt: 'Upcoming booking details', label: 'Booking details', node: '8136:337' },
         ],
       },
     ],
