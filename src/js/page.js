@@ -61,7 +61,7 @@ if (!reducedMotion) {
     ['.case-hero__back, .page-hero .section-label', { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, 0],
     ['.page-hero__title > span, .case-hero__title', { yPercent: 60, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.08 }, 0.2],
     [
-      '.page-hero__lede, .page-hero .btn-row, .case-hero__subtitle, .case-hero__hook, .case-hero__stats > *, .case-summary',
+      '.page-hero__lede, .page-hero .btn-row, .case-hero__subtitle, .case-hero__hook, .case-hero__stats > *, .case-summary, .case-shipped',
       { opacity: 0, y: 24, duration: 0.7, ease: 'power3.out', stagger: 0.06 },
       0.5,
     ],

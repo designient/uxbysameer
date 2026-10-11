@@ -21,6 +21,72 @@ function media({ image, video, alt = '' }, art, key, cls) {
 
 const chips = (list) => `<ul class="case-chips">${list.map((t) => `<li class="chip">${esc(t)}</li>`).join('')}</ul>`;
 
+const STATUS_LABEL = { shipped: 'Shipped', designed: 'Designed, not shipped', cut: 'Cut' };
+const statusPill = (s) =>
+  STATUS_LABEL[s] ? `<span class="status status--${esc(s)}">${STATUS_LABEL[s]}</span>` : '';
+
+/** "Shipped state" strip shown in the hero: what is live, what is only designed. */
+function shippedStrip(shipped) {
+  if (!shipped || !has(shipped.items)) return '';
+  return `<div class="case-shipped" aria-label="Shipped state">
+        <p class="case-stat__label">Shipped state${shipped.asOf ? ` · ${esc(shipped.asOf)}` : ''}</p>
+        <ul class="case-shipped__list">${shipped.items
+          .map((i) => `<li class="case-shipped__item">${statusPill(i.status)}<span>${esc(i.name)}</span></li>`)
+          .join('')}</ul>
+        ${shipped.note ? `<p class="case-note">${esc(shipped.note)}</p>` : ''}
+      </div>`;
+}
+
+/** Phone-frame screen strip. Screens without an image are hidden in production and shown as slots in dev. */
+function phones(screens = [], dev) {
+  const items = screens
+    .filter((s) => s.image || dev)
+    .map((s) =>
+      s.image
+        ? `<figure class="phone"><div class="phone__frame"><img src="${esc(s.image)}" alt="${esc(s.alt || s.label || '')}" width="402" height="874" loading="lazy" decoding="async" /></div>${s.label ? `<figcaption class="phone__label">${esc(s.label)}</figcaption>` : ''}</figure>`
+        : `<figure class="phone"><div class="phone__frame phone__frame--slot"><span>Add: screen${s.node ? ` (Figma ${esc(s.node)})` : ''}</span></div>${s.label ? `<figcaption class="phone__label">${esc(s.label)}</figcaption>` : ''}</figure>`
+    );
+  return items.length ? `<div class="phones" role="group" aria-label="Screens">${items.join('')}</div>` : '';
+}
+
+/** One decision card: situation, decision, outcome, screens. Has its own anchor so it can be shared on its own. */
+function decisionCard(d, n, dev) {
+  const rows = [
+    ['Situation', d.situation],
+    ['Decision', d.decision],
+    ['Outcome', d.outcome],
+  ].filter(([, v]) => v);
+  const story = rows.length
+    ? `<dl class="case-decision__story">${rows
+        .map(([k, v]) => `<div class="case-decision__row"><dt>${k}</dt><dd>${esc(v)}</dd></div>`)
+        .join('')}</dl>`
+    : dev
+      ? `<div class="case-slot">Add: situation, decision, outcome<span>src/js/data/cases.js · dev only, hidden in production</span></div>`
+      : '';
+  return `<article class="case-decision" id="decision-${esc(d.id)}">
+          <header class="case-decision__head">
+            <span class="case-decision__num">D${String(n + 1).padStart(2, '0')}</span>
+            <h3 class="case-decision__title">${esc(d.title)}</h3>
+            ${statusPill(d.status)}
+            <a class="case-decision__anchor" href="#decision-${esc(d.id)}" aria-label="Link to this decision">#</a>
+          </header>
+          ${story}
+          ${phones(d.screens, dev)}
+        </article>`;
+}
+
+/** Research method, personas, anxiety clusters and the stated limits. Rendered inside the research & insights section. */
+function researchBlock(r) {
+  if (!r) return '';
+  return `
+        ${r.method ? `<p class="case-section__text">${esc(r.method)}</p>` : ''}
+        ${has(r.personas) ? `<div class="case-personas">${r.personas
+          .map((p) => `<article class="case-persona"><h3 class="case-persona__name">${esc(p.name)}</h3><p class="case-persona__job">${esc(p.job)}</p><p class="case-persona__friction"><span>Friction</span>${esc(p.friction)}</p></article>`)
+          .join('')}</div>` : ''}
+        ${has(r.anxieties) ? `<p class="case-label">Four anxiety clusters</p>${chips(r.anxieties)}` : ''}
+        ${r.limits ? `<p class="case-callout"><strong>Limits.</strong> ${esc(r.limits)}</p>` : ''}`;
+}
+
 function findTestimonial(name) {
   if (!name) return null;
   for (const group of Object.values(testimonials)) {
@@ -31,7 +97,7 @@ function findTestimonial(name) {
 }
 
 /** Each section: id, TOC label, field names it depends on, slot hint, and a body renderer. */
-function sections(c) {
+function sections(c, dev = false) {
   const t = findTestimonial(c.testimonial);
   return [
     {
@@ -69,9 +135,10 @@ function sections(c) {
     {
       id: 'insights',
       label: 'Research & insights',
-      show: has(c.insights) || has(c.quote),
-      hint: 'insights [{ title, text }] and quote { text, cite }',
+      show: has(c.insights) || has(c.quote) || has(c.research),
+      hint: 'insights [{ title, text }], quote { text, cite } and research { method, personas, anxieties, limits }',
       body: () => `
+        ${researchBlock(c.research)}
         ${has(c.insights) ? `<div class="case-insights">${c.insights
           .map((i, n) => `<article class="case-insight"><span class="case-insight__num">${String(n + 1).padStart(2, '0')}</span><h3 class="case-insight__title">${esc(i.title)}</h3><p class="case-insight__text">${esc(i.text)}</p></article>`)
           .join('')}</div>` : ''}
@@ -109,6 +176,13 @@ function sections(c) {
             </figcaption>
           </figure>`)
         .join('')}</div>`,
+    },
+    {
+      id: 'decisions',
+      label: 'Decisions that shaped it',
+      show: has(c.decisions),
+      hint: 'decisions [{ id, title, status, situation, decision, outcome, screens: [{ image, alt, label, node }] }]',
+      body: () => `<div class="case-decisions">${c.decisions.map((d, n) => decisionCard(d, n, dev)).join('')}</div>`,
     },
     {
       id: 'process',
@@ -179,7 +253,7 @@ export function renderCase(slug, { dev = false } = {}) {
   const at = (offset) => cases[(index + offset) % cases.length];
   const projectFor = (s) => projects.find((p) => p.slug === s);
 
-  const rendered = sections(c)
+  const rendered = sections(c, dev)
     .filter((s) => s.show || (dev && s.slot !== false))
     .map((s) =>
       s.show
@@ -244,6 +318,7 @@ export function renderCase(slug, { dev = false } = {}) {
           <div class="case-stat"><p class="case-stat__label">Read</p><p class="case-stat__value">${minutes} min</p></div>
         </div>
         ${summary}
+        ${shippedStrip(c.shipped)}
       </div>
     </section>
 

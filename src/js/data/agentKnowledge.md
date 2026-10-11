@@ -23,7 +23,7 @@ Edit this file to change what the agent knows. Run `npm run build` (or `npm run 
 
 ## Experience
 
-- Mar 2025 – present: Founder, Head of Product & Growth at Gamana. Founded and launched the MVP of an AI-native travel concierge. Designed agentic AI workflows for personalised itinerary generation, shipped with an AI-first build stack (Cursor, Framer, Bolt), built internal ops pipelines with Make and n8n, and designed growth loops across referral, content and partnerships.
+- Apr 2025 – present: Head of Product & Growth at Gamana, as a core team member (not a founder). Gamana's tagline is "Travel with Confidence". He led the repositioning from an audio-storytelling app to a confidence companion, ran the traveller decision research, owned the design system and design sprints through Sprint 25, and works on the growth plan. The Android MVP went live on 10 Oct 2026 with iOS rolling out; there are 600+ users across beta and live registration, and marketing starts after launch. Stack: Flutter.
 - Aug 2023 – Feb 2025: Director, Designient Technologies. Led product strategy across 40+ SaaS engagements for global clients including Lenovo. Brought AI-assisted design into the workflow, cutting prototype cycles by 40%.
 - Aug 2022 – Aug 2023: UX Lead, Softobiz Technologies. Led UX research and product design for SaaS platforms including EasyWebinar and Cashel Family.
 - Nov 2018 – Jan 2022: UX Lead & Mentor, Designient School. 350+ students secured placements at Mashreq Bank, TCS and Infosys.
@@ -31,7 +31,7 @@ Edit this file to change what the agent knows. Run `npm run build` (or `npm run 
 
 ## Selected work
 
-- Gamana (/work/gamana.html): AI-native travel concierge, zero to MVP, founder.
+- Gamana (/work/gamana.html): Travel with Confidence. Repositioning from audio app to confidence companion, research, design sprints, Android MVP live. Head of Product & Growth, not a founder.
 - Lean Ops Autopilot (/work/ops-automation.html): Make + n8n pipelines that run a startup's operations with a tiny team.
 - Sam, Sameer's AI twin (/work/portfolio-agent.html): this agent — grounded in his work, rate-limited, running on Cloudflare with OpenAI.
 - Cashel Family (/work/cashel.html): fintech web app; redesigned core flows to reduce drop-off.

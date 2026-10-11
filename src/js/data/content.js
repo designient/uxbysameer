@@ -50,7 +50,7 @@ export const stories = [
     titleSerif: 'builder',
     art: { pattern: 'nodes', colors: ['#111111', '#c6f65a'] },
     body: [
-      'I founded Gamana, an AI-native travel concierge, and took it from zero to MVP. I designed the agentic workflows that generate personalised itineraries, and shipped the product with an AI-first build stack.',
+      'I’m Head of Product & Growth at Gamana. I led the repositioning from audio content to "Travel with Confidence" and the first public release, with the research, design and growth work behind it.',
       'Behind the product, I run lean operations on automation pipelines built with Make and n8n. At Designient, bringing AI into the design workflow cut prototype cycles by 40%.',
     ],
     facts: ['Agentic workflows', 'Make + n8n', '40% faster prototyping'],
@@ -114,8 +114,8 @@ export const projects = [
   {
     slug: 'gamana',
     title: 'Gamana',
-    subtitle: 'AI-native travel concierge, zero to MVP',
-    tags: ['AI Agents', 'Founder', 'Zero to MVP'],
+    subtitle: 'Travel with Confidence: from audio app to confidence companion',
+    tags: ['Product strategy', 'Mobile', 'Growth'],
     art: { pattern: 'nodes', colors: ['#4b22d6', '#c6f65a'] },
     image: '',
     href: '/work/gamana.html',
@@ -239,11 +239,11 @@ export const newsletter = {
 
 export const experience = [
   {
-    period: 'Mar 2025 — Present',
-    role: 'Founder, Head of Product & Growth',
+    period: 'Apr 2025 — Present',
+    role: 'Head of Product & Growth',
     company: 'Gamana',
     description:
-      'Founded and launched the MVP of an AI-native travel concierge. Designed agentic AI workflows, shipped with an AI-first build stack, and built growth loops from zero.',
+      'Core team member leading product and growth. Repositioned the app around "Travel with Confidence", ran the traveller research, owned design through Sprint 25, and shipped the Android MVP with 600+ users across beta and live registration.',
   },
   {
     period: 'Aug 2023 — Feb 2025',

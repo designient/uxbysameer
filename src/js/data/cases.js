@@ -28,52 +28,196 @@
 // testimonial  Name of a person in content.js testimonials whose quote belongs to this project.
 // reflection   What you'd do differently, what's next, what this taught you.
 // nda          true to show a note that confidential details were omitted.
+//
+// Optional blocks (used by Gamana, ignored when absent):
+// shipped      { asOf, items: [{ name, status: 'shipped' | 'designed' | 'cut' }], note } — hero "Shipped state" strip.
+// research     { method, personas: [{ name, job, friction }], anxieties: [], limits } — shown in Research & insights.
+// decisions    [{ id, title, status, situation, decision, outcome, screens: [{ image, alt, label, node }] }]
+//              One anchored card per decision (#decision-<id>), so each can be linked or posted on its own.
+//              Screens without an image are hidden in production; `node` is the Figma node id to export.
 
 export const cases = [
   {
     slug: 'gamana',
     title: 'Gamana',
-    subtitle: 'AI-native travel concierge, zero to MVP',
-    hook: '',
+    subtitle: 'Travel with Confidence: from audio app to confidence companion',
+    hook: "Gamana began as an audio-storytelling app. The research said travellers weren't short of content. They were short of confidence. I led the repositioning and the first public release.",
     meta: [
-      { label: 'Role', value: 'Founder & Product Lead' },
-      { label: 'Timeline', value: 'Mar 2025 — Present' },
-      { label: 'Stack', value: 'Claude API, GPT-4o, Cursor' },
-      { label: 'Scope', value: 'Zero to MVP' },
+      { label: 'Role', value: 'Head of Product & Growth' },
+      { label: 'Timeline', value: 'Apr 2025 — Present' },
+      { label: 'Platform', value: 'Flutter · Android live, iOS rolling out' },
+      { label: 'Scope', value: 'Strategy, UX, UI, growth' },
     ],
     summary: {
-      problem: 'Travel planning is fragmented across dozens of apps, tabs and spreadsheets.',
-      approach: 'Agentic AI workflows for personalised itineraries, shipped with an AI-first build stack.',
-      outcome: 'Launched the MVP from zero, compressing multi-week development cycles into days.',
+      problem: 'Travellers hesitate because they cannot tell what is legit, worth the price, safe, and right for their trip.',
+      approach: 'Reframed the product from audio content to "Travel with Confidence", then shaped research, design and growth around that promise.',
+      outcome: 'Android MVP live since 10 Oct 2026, iOS rolling out. 600+ users across beta and live registration. Marketing starts next.',
     },
+    shipped: {
+      asOf: 'Android live 10 Oct 2026 · iOS rolling out',
+      items: [
+        { name: 'Onboarding redesign', status: 'shipped' },
+        { name: 'Stories, walking tours, narrators and languages', status: 'shipped' },
+        { name: 'Coins and in-app purchases', status: 'shipped' },
+        { name: 'Notification system', status: 'shipped' },
+        { name: 'SOS and emergency flow', status: 'shipped' },
+        { name: 'Offline downloads', status: 'shipped' },
+        { name: 'Experience booking and pre-experience brief', status: 'shipped' },
+        { name: 'Family Tracking', status: 'designed' },
+      ],
+      note: '',
+    },
+    // Hero media: export a phone frame from Figma (e.g. Store Screenshots v3) to /public/images/work/gamana/hero.webp, then set image + alt.
     visual: { art: { pattern: 'nodes', colors: ['#4b22d6', '#c6f65a'] }, image: '', video: '', alt: '' },
     problem:
-      "Travel planning is fragmented across dozens of apps, tabs and spreadsheets. Travellers need a single intelligent concierge that understands preferences, builds itineraries and stays helpful after booking, without the overhead of a human travel agent.",
-    context: '', // Why you founded Gamana, the market, who it's for.
-    goals: [], // e.g. the North Star metrics you set (activation rate, 30-day retention) and targets.
-    role: '', // Founder scope: what you did yourself vs. with partners.
+      'Travellers are not short of information. They hesitate because they cannot tell whether an experience is legit, worth the price, safe, and right for their trip, and no listing answers those questions in one place.',
+    context:
+      'Gamana started as an audio-storytelling app: narrated stories at real places and tours, unlocked with coins. The research changed the frame. People were not stopped by a lack of content or inspiration. They were stopped by four questions: Is it legit? Is it worth the price? What if plans change or go wrong? Will it fit my trip and style? "Travel with Confidence" is the answer to those, and it explains what Gamana chooses not to be: another discovery app competing with Viator or GetYourGuide.',
+    goals: [],
+    role:
+      'Head of Product & Growth and a core team member. I led positioning and research, owned product design and the design system across the sprints, shaped the booking layer and the growth plan, and worked with engineering to ship the Flutter app.',
     team: [],
-    tools: ['Claude API', 'GPT-4o', 'Cursor', 'Framer', 'Bolt', 'Make', 'n8n'],
-    insights: [], // What you learned from travellers before building.
-    quote: null,
-    numbers: [],
-    reframe: '',
-    features: [], // Itinerary generation, concierge after booking, etc. Add screenshots or screen recordings.
-    process: [
-      'Defined the product vision and North Star metrics (activation rate, 30-day retention)',
-      'Designed agentic AI workflows for personalised itinerary generation',
-      'Shipped the core product with an AI-first build stack: Cursor, Framer and Bolt',
-      'Built internal ops pipelines with Make and n8n so a lean team could execute',
-      'Designed growth loops across referral, content and partnership channels',
+    tools: ['Figma', 'FigJam', 'Flutter', 'Cursor', 'Claude', 'Notion'],
+    research: {
+      method:
+        'Signal synthesis from public traveller conversation (Reddit, Quora, TripAdvisor, operator and blogger content), cross-checked against OTA, government and search-trend data. Booking data shows what people bought. Forums show what almost stopped them.',
+      personas: [
+        { name: 'Solo', job: 'Proof, more than escape. Showing she can do this safely.', friction: 'Convincing a sceptical household.' },
+        { name: 'Couple', job: 'Romance with a quiet logistical filter.', friction: 'Accommodation and privacy, especially for unmarried couples.' },
+        { name: 'Family', job: 'A time-boxed trip with older parents.', friction: 'Pacing, rest points and honest walking distances.' },
+        { name: 'Friends', job: 'A shared memory without wrecking the friendship.', friction: 'Coordination and mismatched budgets.' },
+      ],
+      anxieties: ['Is it legit?', 'Is it worth the price?', 'What if plans change or go wrong?', 'Will it fit my trip and style?'],
+      limits:
+        'This is a synthesis of signal, not primary research or usability testing. The journey-map quotes are constructed in persona voice and the emotion curves are estimated shapes. The 6 to 8 traveller intercepts I recommended have not been run yet.',
+    },
+    insights: [
+      { title: 'Parents are the real barrier', text: 'For solo women the trip is not the hard part. Convincing the household is, and the persuasion tool is a documented itinerary: hotels, trains, budget.' },
+      { title: 'Couples see a filter booking data hides', text: 'Unmarried couples avoid certain destinations entirely. That shows up as a place never searched, not a cancelled booking.' },
+      { title: 'Varanasi restates the positioning', text: 'Fake blessings, donation pressure and inflated boat rides are a near-exact list of what a confidence product should defuse.' },
+      { title: 'Ladakh is an offline story', text: 'Connectivity is mapped network by network in planning content. Offline download was already built and undersold.' },
+      { title: 'Jorhat has no peer reassurance', text: 'Fast-growing, with almost no organic travel community. A first-mover window for credible content.' },
     ],
-    flow: [], // How the itinerary agent works: inputs, model steps, tools, output.
-    failed: [],
-    impact: [],
-    impactNote: '',
+    quote: null,
+    numbers: [
+      { value: '4', label: 'personas, each with one job' },
+      { value: '9', label: 'destinations mapped against them' },
+      { value: '12', label: 'journey maps across three trip segments' },
+      { value: '4', label: 'anxiety clusters behind the product and the store listing' },
+    ],
+    reframe: 'Know before you book. Understand when you’re there.',
+    features: [],
+    // One card per decision. Screens: export frames from Figma to /public/images/work/gamana/<id>-<n>.webp
+    // (402x874 phone frames, WebP, ~2x), then fill `image` and `alt`. `node` is the Figma node id to export.
+    decisions: [
+      {
+        id: 'onboarding',
+        title: 'Onboarding, redesigned twice',
+        status: 'shipped',
+        situation: 'The first onboarding went through a new flow in Sprints 6 and 7, and one direction was rejected along the way.',
+        // TODO(Sameer): why the first direction was rejected, and what the Sprint 25 hook changed.
+        decision: 'Rebuilt it as four steps: a hook, stories, the walking tour, and creating your own tour.',
+        outcome: 'The Sprint 25 flow shipped in the Android MVP.',
+        screens: [
+          { image: '', alt: 'Onboarding step 1, the hook', label: 'Hook', node: '9084:172' },
+          { image: '', alt: 'Onboarding step 2, stories', label: 'Stories', node: '9084:182' },
+          { image: '', alt: 'Onboarding step 3, the walking tour', label: 'Walking tour', node: '9084:192' },
+          { image: '', alt: 'Onboarding step 4, create your own tour', label: 'Create a tour', node: '9084:202' },
+        ],
+      },
+      {
+        id: 'coins',
+        title: 'Coins first, subscription later',
+        status: 'shipped',
+        situation: 'Audio and guide apps in this category sell per tour, by subscription, or give it away. Gamana’s value is confidence, not minutes of audio.',
+        decision: 'Coins as an internal value layer, priced by content type: story, walk, tour, city pass. A subscription sits above coins later, once purchases are instrumented, so it does not cannibalise one-time unlocks.',
+        outcome: 'Coins and in-app purchases shipped in the Android MVP.',
+        screens: [
+          { image: '', alt: 'Gamana Coins screen', label: 'Coins', node: '3343:8865' },
+          { image: '', alt: 'Profile and coin wallet', label: 'Profile and wallet', node: '6175:10282' },
+          { image: '', alt: 'In-app purchase coin pack', label: 'Coin pack', node: '6049:6795' },
+        ],
+      },
+      {
+        id: 'safety',
+        title: 'Safety built into the product',
+        status: 'shipped',
+        situation: 'One of the four anxiety clusters was "what if plans change or go wrong?" For solo travellers and families that includes personal safety.',
+        decision: 'An SOS and emergency flow, and a safety advisory tier inside the notification system, rather than a help page. Family Tracking was designed in Sprint 17 and is not in this release.',
+        outcome: 'SOS and emergency flows shipped in the Android MVP.',
+        screens: [
+          { image: '', alt: 'SOS system screens', label: 'SOS', node: '1772:8117' },
+          { image: '', alt: 'Emergency flow screens', label: 'Emergency flow', node: '1785:11173' },
+        ],
+      },
+      {
+        id: 'notifications',
+        title: 'Notifications as a lifecycle system',
+        status: 'shipped',
+        situation: 'Most of Gamana’s useful moments happen away from the app: landing in a city, losing signal, running low on coins or storage.',
+        decision: 'Designed notifications as a system of 166 triggers, including a safety advisory tier, instead of one-off pushes. Sprint 15 alone produced about 35 notification designs, from arrival alerts to offline-ready and low-coins updates.',
+        outcome: 'Shipped in the Android MVP.',
+        screens: [
+          { image: '', alt: 'Alerts main screen', label: 'Alerts', node: '4934:702' },
+          { image: '', alt: 'Airport alert notification', label: 'Airport alert', node: '5000:11486' },
+          { image: '', alt: 'Offline ready notification', label: 'Offline ready', node: '5000:9978' },
+        ],
+      },
+      {
+        id: 'offline',
+        title: 'Offline as a first-class feature',
+        status: 'shipped',
+        situation: 'The research found Ladakh’s connectivity gap mapped network by network in planning content. Gamana already had offline download and undersold it.',
+        decision: 'Reworked the offline download flow across Sprints 10 to 16, added a dedicated download manager in Sprint 23, and made stories trigger offline through geofences.',
+        outcome: 'June QA passed online walking tours and offline geofence triggers on iOS and Android.',
+        screens: [
+          { image: '', alt: 'Offline downloads', label: 'Offline downloads', node: '3551:12255' },
+          { image: '', alt: 'New offline download flow', label: 'New download flow', node: '5256:6004' },
+          { image: '', alt: 'Download manager', label: 'Download manager', node: '8485:311' },
+        ],
+      },
+      {
+        id: 'booking',
+        title: 'Booking, plus the layer around it',
+        status: 'shipped',
+        situation: 'Confidence does not end at "book now". The doubt sits before the booking and carries on until the traveller turns up.',
+        decision: 'Add experiences without becoming a marketplace. Supply comes through Bókun and the operator’s own checkout handles payment. Gamana designs what surrounds the booking: a pre-experience brief, upcoming booking details, and a rating step after.',
+        outcome: 'Booking and the pre-experience brief shipped in the Android MVP.',
+        screens: [
+          { image: '', alt: 'Experiences on the home screen', label: 'Experiences', node: '7718:266' },
+          { image: '', alt: 'Booking review', label: 'Booking review', node: '8135:1623' },
+          { image: '', alt: 'Pre-experience brief', label: 'Pre-experience brief', node: '8136:219' },
+          { image: '', alt: 'Upcoming booking details', label: 'Booking details', node: '8136:337' },
+        ],
+      },
+    ],
+    process: [
+      'Led the repositioning from audio content to "Travel with Confidence" after the research showed travellers stall on trust, not on content',
+      'Ran the Traveller Decision Research: four personas, nine destinations, twelve journey maps and five interaction-model hypotheses',
+      'Owned the design system and the design sprints, from Main UI v1.0 through Sprint 25',
+      'Built the App Store and Play listing around the four anxieties, as an arc from doubt to clarity to trust to go',
+      'Planned the first marketing push around a CAC-versus-first-purchase gate, and chose Traffic and Engagement objectives over App Installs because small daily budgets cannot clear Meta’s learning phase',
+      'Defined the approach for AI assistants: enter as the cultural-intelligence layer, not as another trip planner',
+    ],
+    flow: [],
+    failed: [
+      { title: 'Validation is still pending', text: 'I recommended 6 to 8 traveller intercepts before committing engineering time. They have not run yet, and later work, the interaction models and the ad plan, builds on findings that still need that check.' },
+      { title: 'Content lags the promise', text: 'Most of the nine destinations I mapped have no Gamana content yet, including Kerala, the biggest gap. Confidence is only as wide as the library behind it.' },
+      { title: 'Catalog depth limits conversion', text: 'Experience listings are curated by hand. Automated catalog sync and manual booking inquiries were specified and deferred, so how many experiences can convert depends on how many the team adds.' },
+      { title: 'Family Tracking did not ship', text: 'Designed in Sprint 17 and left out of this release.' },
+    ],
+    impact: [
+      { value: '600+', label: 'users across beta and live registration' },
+      { value: '18', label: 'months from first design file to public release' },
+      { value: '10 Oct', label: 'Android MVP live, iOS rolling out' },
+    ],
+    impactNote:
+      'Early traction, not outcome data. Marketing begins the week after launch. I will add install, activation and CAC numbers here when there are real ones.',
     outcome:
-      'Launched the MVP from zero with end-to-end ownership of product strategy, UX, go-to-market and growth. AI-assisted prototyping compressed multi-week development cycles into days.',
+      'A product that says one thing, travel with confidence, and builds every layer toward it: research, design system, listing, safety, offline and booking.',
     testimonial: '',
-    reflection: '',
+    reflection:
+      'The research told us where confidence is missing. The library has not caught up, and the findings still need the intercepts I recommended. Next: run them, then read real activation and CAC data from the first marketing push before building further on the interaction models.',
     nda: false,
   },
   {
